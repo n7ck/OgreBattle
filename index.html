@@ -1,0 +1,2647 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>Ogre Battle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    
+    <script>
+    var data_classchange = {
+  "fighter": { "To":"m", "From":"m"},
+  "amazon": { "To":"f", "From":"f"},
+  "knight": { "To":"m", "From":"m"},
+  "berz": { "To":"m", "From":"m"},
+  "fencer": { "To":"m", "From":"m"},
+  "phalanx": { "To":"m", "From":"m"},
+  "beast_t": { "To":"m", "From":"m"},
+  "doll_m": { "To":"m", "From":"m"},
+  "Nin": { "To":"m", "From":"m"},
+  "wiz": { "To":"m", "From":"m"},
+  "archer": { "To":"f", "From":"f"},
+  "dragon_t": { "To":"f", "From":"f"},
+  "valk": { "To":"f", "From":"f"},
+  "witch": { "To":"f", "From":"f"},
+  "sorc": { "To":"f", "From":"f"},
+  "cleric": { "To":"f", "From":"f"},
+  "pala": { "To":"m", "From":"m"},
+  "Dgo": { "To":"m", "From":"m"},
+  "black": { "To":"m", "From":"m"},
+  "SwM": { "To":"m", "From":"m"},
+  "cata": { "To":"m", "From":"m"},
+  "BsM": { "To":"m", "From":"m"},
+  "Enc": { "To":"m", "From":"m"},
+  "NnM": { "To":"m", "From":"m"},
+  "ArM": { "To":"m", "From":"m"},
+  "diana": { "To":"f", "From":"f"},
+  "DgM": { "To":"f", "From":"f"},
+  "freya": { "To":"f", "From":"f"},
+  "Sir": { "To":"f", "From":"f"},
+  "Pri": { "To":"f", "From":"f"},
+  "Prn": { "To":"f", "From":"f"},
+  "CeM": { "To":"m", "From":"m"},
+  "CeF": { "To":"f", "From":"f"},
+  "angel": { "To":"f", "From":"an"},
+  "seraph": { "To":"an", "From":"yes"},
+  "Lic": { "To":"m f", "From":"yes"},
+  "hawk": { "To":"ha", "From":"ha"},
+  "vult": { "To":"ha", "From":"ha"},
+  "rave": { "To":"ha", "From":"ha"},
+  "VamN": { "To":"m", "From":"yes"},
+  "Vam": { "To":"m", "From":"yes"},
+  "ZomM": { "To":"m", "From":"us"},
+  "ZomF": { "To":"f", "From":"us"},
+  "skele": { "To":"us", "From":"ug"},
+  "ghost": { "To":"ug", "From":"yes"},
+  "gor": { "To":"yes", "From":"yes"},
+  "pump": { "To":"yes", "From":"yes"},
+  "grem": { "To":"yes", "From":"yes"},
+  "gob": { "To":"yes", "From":"yes"},
+  "satu": { "To":"yes", "From":"yes"},
+  "ogre": { "To":"yes", "From":"yes"},
+  "yDragon": { "To":"yes", "From":"dd"},
+  "thunderD": { "To":"dd", "From":"dt"},
+  "redD": { "To":"dd", "From":"dr"},
+  "earthD": { "To":"dd", "From":"de"},
+  "blueD": { "To":"dd", "From":"dw"},
+  "platD": { "To":"dd", "From":"dp"},
+  "blackD": { "To":"dd", "From":"db"},
+  "quet": { "To":"dt", "From":"yes"},
+  "flar": { "To":"dr", "From":"yes"},
+  "azhi": { "To":"de", "From":"yes"},
+  "hydra": { "To":"dw", "From":"yes"},
+  "baha": { "To":"dp", "From":"yes"},
+  "tiam": { "To":"db", "From":"yes"},
+  "wyrm": { "To":"yes", "From":"wy"},
+  "wyv": { "To":"wy", "From":"yes"},
+  "grif": { "To":"yes", "From":"gr"},
+  "opi": { "To":"gr", "From":"yes"},
+  "cock": { "To":"yes", "From":"yes"},
+  "sphinx": { "To":"yes", "From":"yes"},
+  "hound": { "To":"yes", "From":"ce"},
+  "cerb": { "To":"ce", "From":"yes"},
+  "golem": { "To":"yes", "From":"g1"},
+  "sgolem": { "To":"g1", "From":"g2"},
+  "bgolem": { "To":"g2", "From":"yes"},
+  "magnus": { "To":"yes", "From":"M1"},
+  "magnus3": { "To":"M1", "From":"M2"},
+  "magnus4": { "To":"M2", "From":"yes"},
+  "dio": { "To":"yes", "From":"d1"},
+  "dio3": { "To":"d1", "From":"yes"},
+  "leia": { "To":"yes", "From":"l1"},
+  "leia3": { "To":"l1", "From":"yes"},
+  "dest": { "To":"yes", "From":"yes"},
+  "debo": { "To":"yes", "From":"yes"},
+  "gilb": { "To":"yes", "From":"m"},
+  "aisha": { "To":"yes", "From":"f"},
+  "sera": { "To":"yes", "From":"yes"},
+  "vad": { "To":"yes", "From":"yes"},
+  "euro": { "To":"yes", "From":"f"},
+  "biske": { "To":"bisk", "From":"bisk"},
+  "biskeN": { "To":"bisk", "From":"bisk"},
+  "ank": { "To":"yes", "From":"yes"},
+  "yum": { "To":"yes", "From":"yes"},
+  "troi": { "To":"yes", "From":"m"},
+  "ansa": { "To":"yes", "From":"m"},
+  "ketr": { "To":"yes", "From":"f"},
+  "lied": { "To":"yes", "From":"f"},
+  "shee": { "To":"yes", "From":"ha"},
+  "mere": { "To":"yes", "From":"f"},
+  "paul": { "To":"yes", "From":"m"},
+  "carth": { "To":"yes", "From":"m"},
+  "deneb": { "To":"yes", "From":"f"}
+};
+
+var data_lvl1 = {
+	  "fighter": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":42, "DEX":45},
+	  "amazon": { "HP":65, "STR":50, "VIT":45, "INT":45, "MEN":48, "AGI":50, "DEX":52},
+	  "angel": { "HP":70, "STR":55, "VIT":47, "INT":58, "MEN":59, "AGI":53, "DEX":55},
+	  "hawk": { "HP":78, "STR":57, "VIT":48, "INT":42, "MEN":45, "AGI":51, "DEX":45},
+	  "skele": { "HP":65, "STR":50, "VIT":40, "INT":50, "MEN":51, "AGI":45, "DEX":45},
+	  "ghost": { "HP":65, "STR":50, "VIT":40, "INT":48, "MEN":51, "AGI":52, "DEX":55},
+	  "gor": { "HP":70, "STR":62, "VIT":52, "INT":43, "MEN":59, "AGI":58, "DEX":62},
+	  "pump": { "HP":78, "STR":49, "VIT":55, "INT":38, "MEN":72, "AGI":42, "DEX":66},
+	  "grem": { "HP":52, "STR":42, "VIT":40, "INT":48, "MEN":50, "AGI":39, "DEX":54},
+	  "gob": { "HP":72, "STR":55, "VIT":58, "INT":52, "MEN":48, "AGI":52, "DEX":59},
+	  "satu": { "HP":78, "STR":57, "VIT":48, "INT":42, "MEN":45, "AGI":58, "DEX":45},
+	  "ogre": { "HP":85, "STR":88, "VIT":70, "INT":45, "MEN":50, "AGI":40, "DEX":45},
+	  "yDragon": { "HP":89, "STR":78, "VIT":72, "INT":55, "MEN":75, "AGI":45, "DEX":58},
+	  "wyrm": { "HP":90, "STR":78, "VIT":72, "INT":54, "MEN":75, "AGI":62, "DEX":52},
+	  "grif": { "HP":82, "STR":72, "VIT":65, "INT":58, "MEN":70, "AGI":59, "DEX":45},
+	  "cock": { "HP":78, "STR":62, "VIT":72, "INT":52, "MEN":59, "AGI":57, "DEX":55},
+	  "sphinx": { "HP":88, "STR":70, "VIT":60, "INT":62, "MEN":53, "AGI":55, "DEX":59},
+	  "hound": { "HP":75, "STR":82, "VIT":81, "INT":45, "MEN":55, "AGI":45, "DEX":65},
+	  "golem": { "HP":100, "STR":62, "VIT":79, "INT":31, "MEN":33, "AGI":33, "DEX":40},
+	  "magnus": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":51, "DEX":45},
+	  "leia": { "HP":85, "STR":70, "VIT":55, "INT":60, "MEN":63, "AGI":65, "DEX":67},
+	  "dest": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":51, "DEX":45},
+	  "debo": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":55, "DEX":45},
+	  "vad": { "HP":60, "STR":60, "VIT":36, "INT":22, "MEN":42, "AGI":26, "DEX":27},
+	  "euro": { "HP":71, "STR":62, "VIT":50, "INT":68, "MEN":55, "AGI":57, "DEX":52},
+	  "biske": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":42, "DEX":45},
+	  "ank": { "HP":70, "STR":53, "VIT":50, "INT":41, "MEN":46, "AGI":42, "DEX":45},
+	  "yum": { "HP":70, "STR":51, "VIT":50, "INT":49, "MEN":46, "AGI":42, "DEX":45},
+	  "shee": { "HP":78, "STR":57, "VIT":48, "INT":42, "MEN":45, "AGI":51, "DEX":45}
+        };
+        
+        var data_base = {
+	  "fighter": { "Base":"fighter", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "knight": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":58, "Luck":50},
+	  "berz": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":40, "Luck":48},
+	  "beast_t": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":40, "Luck":50},
+	  "fencer": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "phalanx": { "Base":"fighter", "BaseLvl":7, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "doll_m": { "Base":"fighter", "BaseLvl":7, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "wiz": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":30, "Luck":50},
+	  "pala": { "Base":"fighter", "BaseLvl":6, "Base2":"knight", "Base2_Lvl":15, "Start_Align":70, "Luck":50},
+	  "black": { "Base":"fighter", "BaseLvl":6, "Base2":"berz", "Base2_Lvl":15, "Start_Align":30, "Luck":50},
+	  "cata": { "Base":"fighter", "BaseLvl":7, "Base2":"phalanx", "Base2_Lvl":19, "Start_Align":50, "Luck":50},
+	  "amazon": { "Base":"amazon", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "archer": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":48, "Luck":50},
+	  "dragon_t": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":54, "Luck":50},
+	  "valk": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":58, "Luck":50},
+	  "witch": { "Base":"amazon", "BaseLvl":7, "Base2":"", "Base2_Lvl":0, "Start_Align":45, "Luck":58},
+	  "sorc": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":35, "Luck":50},
+	  "cleric": { "Base":"amazon", "BaseLvl":5, "Base2":"", "Base2_Lvl":0, "Start_Align":65, "Luck":50},
+	  "diana": { "Base":"amazon", "BaseLvl":6, "Base2":"archer", "Base2_Lvl":17, "Start_Align":45, "Luck":50},
+	  "freya": { "Base":"amazon", "BaseLvl":6, "Base2":"valk", "Base2_Lvl":17, "Start_Align":62, "Luck":50},
+	  "angel": { "Base":"angel", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":52, "Luck":50},
+	  "seraph": { "Base":"angel", "BaseLvl":17, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "hawk": { "Base":"hawk", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":52},
+	  "vult": { "Base":"hawk", "BaseLvl":12, "Base2":"", "Base2_Lvl":0, "Start_Align":62, "Luck":54},
+	  "rave": { "Base":"hawk", "BaseLvl":11, "Base2":"", "Base2_Lvl":0, "Start_Align":39, "Luck":53},
+	  "skele": { "Base":"skele", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":15, "Luck":50},
+	  "ghost": { "Base":"ghost", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":10, "Luck":50},
+	  "gor": { "Base":"gor", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":55, "Luck":49},
+	  "pump": { "Base":"pump", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":25, "Luck":40},
+	  "grem": { "Base":"grem", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":40, "Luck":60},
+	  "gob": { "Base":"gob", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":46},
+	  "satu": { "Base":"satu", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":60, "Luck":52},
+	  "ogre": { "Base":"ogre", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":35, "Luck":45},
+	  "yDragon": { "Base":"yDragon", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "thunderD": { "Base":"yDragon", "BaseLvl":8, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "redD": { "Base":"yDragon", "BaseLvl":8, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "earthD": { "Base":"yDragon", "BaseLvl":8, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "blueD": { "Base":"yDragon", "BaseLvl":8, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "platD": { "Base":"yDragon", "BaseLvl":9, "Base2":"", "Base2_Lvl":0, "Start_Align":75, "Luck":50},
+	  "blackD": { "Base":"yDragon", "BaseLvl":9, "Base2":"", "Base2_Lvl":0, "Start_Align":25, "Luck":50},
+	  "quet": { "Base":"yDragon", "BaseLvl":8, "Base2":"thunderD", "Base2_Lvl":16, "Start_Align":50, "Luck":50},
+	  "flar": { "Base":"yDragon", "BaseLvl":8, "Base2":"redD", "Base2_Lvl":16, "Start_Align":50, "Luck":50},
+	  "azhi": { "Base":"yDragon", "BaseLvl":8, "Base2":"earthD", "Base2_Lvl":16, "Start_Align":50, "Luck":50},
+	  "hydra": { "Base":"yDragon", "BaseLvl":8, "Base2":"blueD", "Base2_Lvl":16, "Start_Align":50, "Luck":50},
+	  "baha": { "Base":"yDragon", "BaseLvl":9, "Base2":"platD", "Base2_Lvl":17, "Start_Align":80, "Luck":50},
+	  "tiam": { "Base":"yDragon", "BaseLvl":9, "Base2":"blackD", "Base2_Lvl":17, "Start_Align":20, "Luck":50},
+	  "wyrm": { "Base":"wyrm", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":45, "Luck":50},
+	  "wyv": { "Base":"wyrm", "BaseLvl":13, "Base2":"", "Base2_Lvl":0, "Start_Align":40, "Luck":50},
+	  "grif": { "Base":"grif", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":55, "Luck":50},
+	  "opi": { "Base":"grif", "BaseLvl":12, "Base2":"", "Base2_Lvl":0, "Start_Align":60, "Luck":50},
+	  "cock": { "Base":"cock", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":35, "Luck":50},
+	  "sphinx": { "Base":"sphinx", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":65, "Luck":50},
+	  "hound": { "Base":"hound", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":45, "Luck":50},
+	  "cerb": { "Base":"hound", "BaseLvl":12, "Base2":"", "Base2_Lvl":0, "Start_Align":30, "Luck":50},
+	  "golem": { "Base":"golem", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "sgolem": { "Base":"golem", "BaseLvl":9, "Base2":"", "Base2_Lvl":0, "Start_Align":48, "Luck":50},
+	  "bgolem": { "Base":"golem", "BaseLvl":9, "Base2":"sgolem", "Base2_Lvl":17, "Start_Align":55, "Luck":50},
+	  "magnus": { "Base":"magnus", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "dio": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":42, "Luck":50},
+	  "leia": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":48, "Luck":50},
+	  "dest": { "Base":"dest", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":54},
+	  "debo": { "Base":"debo", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":58, "Luck":50},
+	  "gilb": { "Base":"fighter", "BaseLvl":6, "Base2":"beast_t", "Base2_Lvl":15, "Start_Align":42, "Luck":48},
+	  "aisha": { "Base":"amazon", "BaseLvl":5, "Base2":"cleric", "Base2_Lvl":15, "Start_Align":78, "Luck":55},
+	  "sera": { "Base":"fighter", "BaseLvl":6, "Base2":"wiz", "Base2_Lvl":17, "Start_Align":31, "Luck":51},
+	  "vad": { "Base":"vad", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":52, "Luck":47},
+	  "euro": { "Base":"euro", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":54, "Luck":56},
+	  "biske": { "Base":"biske", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":19, "Luck":46},
+	  "ank": { "Base":"ank", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":71, "Luck":52},
+	  "yum": { "Base":"yum", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":42},
+	  "troi": { "Base":"fighter", "BaseLvl":7, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	  "ansa": { "Base":"fighter", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":40, "Luck":48},
+	  "ketr": { "Base":"amazon", "BaseLvl":5, "Base2":"", "Base2_Lvl":0, "Start_Align":65, "Luck":50},
+	  "lied": { "Base":"amazon", "BaseLvl":6, "Base2":"", "Base2_Lvl":0, "Start_Align":48, "Luck":50},
+	  "shee": { "Base":"shee", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":45, "Luck":56},
+	  "mere": { "Base":"amazon", "BaseLvl":7, "Base2":"sorc", "Base2_Lvl":19, "Start_Align":33, "Luck":50},
+	  "paul": { "Base":"fighter", "BaseLvl":7, "Base2":"doll_m", "Base2_Lvl":17, "Start_Align":50, "Luck":50},
+	  "carth": { "Base":"fighter", "BaseLvl":6, "Base2":"berz", "Base2_Lvl":15, "Start_Align":30, "Luck":50},
+	  "deneb": { "Base":"amazon", "BaseLvl":7, "Base2":"", "Base2_Lvl":0, "Start_Align":45, "Luck":62}
+	};
+	
+	data_lvl1.col = [ "HP","STR","VIT","INT","MEN","AGI","DEX"];
+	data_base.col = [ "Base","BaseLvl","Base2","Base2_Lvl","Start_Align","Luck"];
+	
+	data_char = {
+  "fighter": { "Name":"Fighter", "Align":"-", "UL":"Short Sword", "UR":"Chain Mail", "LL":"Round Shield", "LR":"Iron Helm", "HP":5, "STR":4, "VIT":3, "INT":3, "MEN":3, "AGI":2, "DEX":3, "Strike":45, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":22, "physCo":50, "magCo":28},
+  "amazon": { "Name":"Amazon", "Align":"-", "UL":"Short Bow", "UR":"Leather Armor", "LL":"-", "LR":"Bandanna", "HP":4, "STR":4, "VIT":2, "INT":3, "MEN":3, "AGI":3, "DEX":3, "Strike":48, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":23, "physCo":48, "magCo":28},
+  "knight": { "Name":"Knight", "Align":"40+", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"Kite Shield", "LR":"Armet", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":4, "AGI":4, "DEX":3, "Strike":42, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":53, "Bane":46, "physDefCo":25, "magDefCo":24, "physCo":55, "magCo":31},
+  "berz": { "Name":"Berserker", "Align":"00-60", "UL":"Francisca", "UR":"Leather Armor", "LL":"-", "LR":"Iron Helm", "HP":5, "STR":5, "VIT":5, "INT":3, "MEN":4, "AGI":4, "DEX":3, "Strike":53, "Wind":50, "Fire":48, "Earth":51, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":23, "physCo":58, "magCo":29},
+  "fencer": { "Name":"Fencer", "Align":"30+", "UL":"Bastard Sword", "UR":"Cloth Armor", "LL":"-", "LR":"Jin-gasa", "HP":4, "STR":5, "VIT":3, "INT":3, "MEN":5, "AGI":5, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":24, "physCo":54, "magCo":37},
+  "phalanx": { "Name":"Phalanx", "Align":"20-80", "UL":"Spear", "UR":"Plate Mail", "LL":"Large Shield", "LR":"Iron Helm", "HP":5, "STR":4, "VIT":5, "INT":3, "MEN":4, "AGI":3, "DEX":3, "Strike":47, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":30, "magDefCo":22, "physCo":50, "magCo":34},
+  "beast_t": { "Name":"Beast Tamer", "Align":"00-60", "UL":"Leather Whip", "UR":"Leather Armor", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":3, "AGI":4, "DEX":4, "Strike":52, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":22, "magDefCo":20, "physCo":54, "magCo":29},
+  "doll_m": { "Name":"Doll Master", "Align":"20-80", "UL":"Marionette", "UR":"Robe", "LL":"Amulet", "LR":"Bandanna", "HP":4, "STR":4, "VIT":4, "INT":5, "MEN":4, "AGI":4, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":21, "magDefCo":26, "physCo":48, "magCo":48},
+  "Nin": { "Name":"Ninja", "Align":"00-60", "UL":"Iron Claw", "UR":"Ninja's Garb", "LL":"-", "LR":"Hachigane", "HP":4, "STR":5, "VIT":3, "INT":4, "MEN":4, "AGI":6, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":23, "physCo":46, "magCo":46},
+  "wiz": { "Name":"Wizard", "Align":"00-60", "UL":"Scipplay Staff", "UR":"Robe", "LL":"Spellbook", "LR":"Amulet", "HP":3, "STR":3, "VIT":3, "INT":6, "MEN":4, "AGI":3, "DEX":3, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":18, "magDefCo":30, "physCo":35, "magCo":53},
+  "archer": { "Name":"Archer", "Align":"20-80", "UL":"Great Bow", "UR":"Leather Armor", "LL":"-", "LR":"Leather Hat", "HP":4, "STR":4, "VIT":4, "INT":3, "MEN":4, "AGI":4, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":22, "magDefCo":22, "physCo":52, "magCo":38},
+  "dragon_t": { "Name":"Dragon Tamer", "Align":"30-90", "UL":"Rapier", "UR":"Chain Mail", "LL":"-", "LR":"Bone Helm", "HP":5, "STR":5, "VIT":5, "INT":4, "MEN":4, "AGI":3, "DEX":4, "Strike":51, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":24, "physCo":50, "magCo":39},
+  "valk": { "Name":"Valkyrie", "Align":"40+", "UL":"Spear", "UR":"Breastplate", "LL":"Round Shield", "LR":"Plumed Headband", "HP":4, "STR":4, "VIT":4, "INT":4, "MEN":4, "AGI":4, "DEX":4, "Strike":46, "Wind":60, "Fire":50, "Earth":50, "Water":50, "Virtue":55, "Bane":48, "physDefCo":22, "magDefCo":26, "physCo":48, "magCo":49},
+  "witch": { "Name":"Witch", "Align":"00-60", "UL":"Scipplay Staff", "UR":"Witch's Dress", "LL":"Spellbook", "LR":"Pointy Hat", "HP":4, "STR":4, "VIT":3, "INT":6, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":54, "Fire":54, "Earth":54, "Water":54, "Virtue":54, "Bane":54, "physDefCo":18, "magDefCo":31, "physCo":36, "magCo":51},
+  "sorc": { "Name":"Sorceress", "Align":"00-60", "UL":"Scipplay Staff", "UR":"Witch's Dress", "LL":"Spellbook", "LR":"Amulet", "HP":3, "STR":3, "VIT":3, "INT":5, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":17, "magDefCo":31, "physCo":34, "magCo":47},
+  "cleric": { "Name":"Cleric", "Align":"45+", "UL":"Light Mace", "UR":"Cleric's Vestment", "LL":"-", "LR":"Rosary", "HP":4, "STR":3, "VIT":3, "INT":4, "MEN":5, "AGI":3, "DEX":3, "Strike":53, "Wind":51, "Fire":51, "Earth":51, "Water":51, "Virtue":51, "Bane":51, "physDefCo":20, "magDefCo":32, "physCo":40, "magCo":46},
+  "pala": { "Name":"Paladin", "Align":"60+", "UL":"Blessed Sword", "UR":"Baldr Armor", "LL":"Kite Shield", "LR":"Baldr Helm", "HP":6, "STR":6, "VIT":5, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":42, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":26, "magDefCo":27, "physCo":58, "magCo":44},
+  "Dgo": { "Name":"Dragoon", "Align":"-", "UL":"Sword of Tiamat", "UR":"Dragon Armor", "LL":"-", "LR":"Dragon Helm", "HP":6, "STR":6, "VIT":6, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":30, "magDefCo":31, "physCo":60, "magCo":34},
+  "black": { "Name":"Black Knight", "Align":"00-40", "UL":"Satan's Bullova", "UR":"Baldr Armor", "LL":"Valiant Mantle", "LR":"Armet", "HP":6, "STR":7, "VIT":6, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":45, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":26, "physCo":60, "magCo":41},
+  "SwM": { "Name":"Sword Master", "Align":"40+", "UL":"Claymore", "UR":"Cloth Armor", "LL":"-", "LR":"Hachigane", "HP":5, "STR":5, "VIT":4, "INT":4, "MEN":4, "AGI":5, "DEX":7, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":21, "magDefCo":25, "physCo":57, "magCo":38},
+  "cata": { "Name":"Cataphract", "Align":"30-80", "UL":"Baldr Spear", "UR":"Heavy Armor", "LL":"Tower Shield", "LR":"Armet", "HP":6, "STR":5, "VIT":7, "INT":3, "MEN":4, "AGI":3, "DEX":4, "Strike":40, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":34, "magDefCo":24, "physCo":53, "magCo":36},
+  "BsM": { "Name":"Beast Master", "Align":"00-45", "UL":"Rupture Rose", "UR":"Hard Leather", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":21, "physCo":55, "magCo":31},
+  "Enc": { "Name":"Enchanter", "Align":"25-75", "UL":"Fool", "UR":"Magician's Robe", "LL":"Amulet", "LR":"Bandanna", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":22, "magDefCo":27, "physCo":50, "magCo":50},
+  "NnM": { "Name":"Ninja Master", "Align":"00-40", "UL":"Baldr Claw", "UR":"Ninja's Garb", "LL":"-", "LR":"Hannya Mask", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":4, "AGI":6, "DEX":5, "Strike":50, "Wind":51, "Fire":51, "Earth":51, "Water":51, "Virtue":51, "Bane":51, "physDefCo":21, "magDefCo":25, "physCo":48, "magCo":48},
+  "ArM": { "Name":"Archmage", "Align":"00-40", "UL":"Arc Wand", "UR":"Magician's Robe", "LL":"Spellbook", "LR":"Amulet", "HP":4, "STR":3, "VIT":3, "INT":7, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":19, "magDefCo":31, "physCo":36, "magCo":43},
+  "diana": { "Name":"Diana", "Align":"20-70", "UL":"Ytival", "UR":"Hard Leather", "LL":"-", "LR":"Plumed Headband", "HP":5, "STR":5, "VIT":5, "INT":4, "MEN":4, "AGI":5, "DEX":6, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":23, "magDefCo":24, "physCo":54, "magCo":39},
+  "DgM": { "Name":"Dragon Master", "Align":"50-90", "UL":"Estoc", "UR":"Scale Armor", "LL":"-", "LR":"Plumed Headband", "HP":6, "STR":6, "VIT":5, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":55, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":25, "magDefCo":25, "physCo":53, "magCo":40},
+  "freya": { "Name":"Freya", "Align":"60+", "UL":"Thunder Spear", "UR":"Baldr Mail", "LL":"Buckler", "LR":"Armet", "HP":5, "STR":5, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":40, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":23, "magDefCo":27, "physCo":51, "magCo":49},
+  "Sir": { "Name":"Siren", "Align":"00-45", "UL":"Arc Wand", "UR":"Fur Coat", "LL":"Spellbook", "LR":"Amulet", "HP":4, "STR":3, "VIT":3, "INT":7, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":18, "magDefCo":32, "physCo":35, "magCo":45},
+  "Pri": { "Name":"Priest", "Align":"65+", "UL":"Baldr Mace", "UR":"Robe of the Wise", "LL":"-", "LR":"Rosary", "HP":5, "STR":3, "VIT":4, "INT":5, "MEN":6, "AGI":3, "DEX":3, "Strike":53, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":22, "magDefCo":34, "physCo":41, "magCo":40},
+  "Prn": { "Name":"Princess", "Align":"70+ ", "UL":"Battle Fan", "UR":"Pure-White Dress", "LL":"Spellbook", "LR":"Dream Tiara", "HP":4, "STR":3, "VIT":2, "INT":5, "MEN":5, "AGI":3, "DEX":3, "Strike":47, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":19, "magDefCo":27, "physCo":30, "magCo":54},
+  "CeM": { "Name":"M. Centurion ch3", "Align":"*", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"Kite Shield", "LR":"Armet", "HP":5, "STR":5, "VIT":4, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":40, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":26, "physCo":57, "magCo":36},
+  "CeF": { "Name":"F. Centurion ch3", "Align":"*", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"Buckler", "LR":"Baldr Helm", "HP":5, "STR":5, "VIT":4, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":40, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":27, "physCo":55, "magCo":38},
+  "angel": { "Name":"Angel Knight ch3", "Align":"50+", "UL":"Needle of Light", "UR":"Plate Mail", "LL":"Kite Shield", "LR":"-", "HP":4, "STR":4, "VIT":4, "INT":3, "MEN":4, "AGI":4, "DEX":5, "Strike":40, "Wind":50, "Fire":52, "Earth":52, "Water":52, "Virtue":59, "Bane":45, "physDefCo":23, "magDefCo":35, "physCo":54, "magCo":31},
+  "seraph": { "Name":"Seraph ch3", "Align":"75+", "UL":"Needle of Light", "UR":"Baldr Mail", "LL":"Kite Shield", "LR":"-", "HP":4, "STR":4, "VIT":4, "INT":4, "MEN":4, "AGI":4, "DEX":6, "Strike":42, "Wind":50, "Fire":52, "Earth":52, "Water":52, "Virtue":65, "Bane":43, "physDefCo":24, "magDefCo":37, "physCo":56, "magCo":35},
+  "Lic": { "Name":"Lich", "Align":"00-30", "UL":"Kerykeion", "UR":"Bloodstained Robe", "LL":"Book of Bane", "LR":"Ring of the Dead", "HP":3, "STR":3, "VIT":3, "INT":7, "MEN":5, "AGI":3, "DEX":4, "Strike":59, "Wind":59, "Fire":59, "Earth":59, "Water":59, "Virtue":42, "Bane":68, "physDefCo":30, "magDefCo":41, "physCo":30, "magCo":36},
+  "hawk": { "Name":"Hawkman", "Align":"-", "UL":"Halt Hammer", "UR":"Leather Armor", "LL":"-", "LR":"Bandanna", "HP":4, "STR":4, "VIT":3, "INT":3, "MEN":3, "AGI":4, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":21, "magDefCo":21, "physCo":51, "magCo":26},
+  "vult": { "Name":"Vultan", "Align":"40+", "UL":"Baldr Club", "UR":"Hard Leather", "LL":"-", "LR":"Hachigane", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":4, "AGI":6, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":25, "magDefCo":24, "physCo":53, "magCo":31},
+  "rave": { "Name":"Raven", "Align":"00-60", "UL":"Baldr Axe", "UR":"Hard Leather", "LL":"-", "LR":"Armet", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":4, "AGI":5, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":22, "physCo":55, "magCo":30},
+  "VamN": { "Name":"Vampire Night", "Align":"00-50", "UL":"-", "UR":"Count's Garment", "LL":"-", "LR":"Bloody Emblem", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":53, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":44, "Bane":59, "physDefCo":25, "magDefCo":24, "physCo":55, "magCo":31},
+  "Vam": { "Name":"Vampire Day", "Align":"00-50", "UL":"-", "UR":"Count's Garment", "LL":"-", "LR":"Bloody Emblem", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":96, "Wind":96, "Fire":96, "Earth":96, "Water":96, "Virtue":60, "Bane":96, "physDefCo":99, "magDefCo":99, "physCo":0, "magCo":0},
+  "ZomM": { "Name":"M. Zombie", "Align":"*", "UL":"-", "UR":"Old Clothing", "LL":"-", "LR":"-", "HP":5, "STR":4, "VIT":3, "INT":2, "MEN":3, "AGI":3, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":21, "magDefCo":22, "physCo":50, "magCo":26},
+  "ZomF": { "Name":"F. Zombie", "Align":"*", "UL":"-", "UR":"Old Clothing", "LL":"-", "LR":"-", "HP":4, "STR":4, "VIT":2, "INT":2, "MEN":3, "AGI":3, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":23, "physCo":49, "magCo":26},
+  "skele": { "Name":"Skeleton", "Align":"*", "UL":"Halt Hammer", "UR":"Torn Cloth", "LL":"-", "LR":"-", "HP":4, "STR":5, "VIT":2, "INT":2, "MEN":3, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":18, "magDefCo":37, "physCo":55, "magCo":26},
+  "ghost": { "Name":"Ghost", "Align":"*", "UL":"-", "UR":"Torn Cloth", "LL":"-", "LR":"-", "HP":3, "STR":3, "VIT":2, "INT":5, "MEN":3, "AGI":3, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":55, "physDefCo":30, "magDefCo":22, "physCo":35, "magCo":50},
+  "gor": { "Name":"Gorgon", "Align":"-", "UL":"Baldr Bow", "UR":"Leather Armor", "LL":"-", "LR":"-", "HP":4, "STR":4, "VIT":3, "INT":3, "MEN":4, "AGI":5, "DEX":5, "Strike":60, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":31, "physCo":52, "magCo":44},
+  "pump": { "Name":"Pumpkinhead", "Align":"-", "UL":"-", "UR":"Plain Clothing", "LL":"-", "LR":"Glass Pumpkin", "HP":4, "STR":4, "VIT":6, "INT":2, "MEN":3, "AGI":4, "DEX":2, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":22, "magDefCo":24, "physCo":45, "magCo":38},
+  "grem": { "Name":"Gremlin", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":3, "STR":2, "VIT":3, "INT":5, "MEN":6, "AGI":6, "DEX":6, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":16, "magDefCo":29, "physCo":29, "magCo":50},
+  "gob": { "Name":"Goblin", "Align":"-", "UL":"Short Sword", "UR":"Plate Mail", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":3, "INT":2, "MEN":3, "AGI":4, "DEX":2, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":22, "physCo":48, "magCo":24},
+  "satu": { "Name":"Saturos", "Align":"-", "UL":"Evil Axe", "UR":"Hard Leather", "LL":"-", "LR":"-", "HP":4, "STR":4, "VIT":3, "INT":5, "MEN":4, "AGI":4, "DEX":4, "Strike":55, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":48, "Bane":55, "physDefCo":21, "magDefCo":28, "physCo":51, "magCo":46},
+  "ogre": { "Name":"Ogre", "Align":"-", "UL":"Warhammer", "UR":"Leather Armor", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":5, "INT":3, "MEN":4, "AGI":3, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":46, "Bane":59, "physDefCo":25, "magDefCo":23, "physCo":59, "magCo":26},
+  "yDragon": { "Name":"Young Dragon", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":4, "VIT":5, "INT":2, "MEN":3, "AGI":2, "DEX":3, "Strike":52, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":24, "physCo":57, "magCo":26},
+  "thunderD": { "Name":"Thunder Dragon", "Align":"20-80", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":5, "VIT":5, "INT":3, "MEN":4, "AGI":4, "DEX":5, "Strike":54, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":27, "magDefCo":26, "physCo":61, "magCo":31},
+  "redD": { "Name":"Red Dragon", "Align":"20-80", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":5, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":54, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":27, "magDefCo":26, "physCo":62, "magCo":32},
+  "earthD": { "Name":"Earth Dragon", "Align":"20-80", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":5, "VIT":6, "INT":3, "MEN":4, "AGI":3, "DEX":4, "Strike":54, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":29, "magDefCo":27, "physCo":59, "magCo":31},
+  "blueD": { "Name":"Blue Dragon", "Align":"20-80", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":5, "VIT":5, "INT":3, "MEN":5, "AGI":3, "DEX":5, "Strike":54, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":28, "physCo":60, "magCo":32},
+  "platD": { "Name":"Platinum Dragon", "Align":"65+", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":5, "VIT":6, "INT":4, "MEN":4, "AGI":3, "DEX":4, "Strike":55, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":28, "physCo":61, "magCo":33},
+  "blackD": { "Name":"Black Dragon", "Align":"00-35", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":5, "INT":4, "MEN":4, "AGI":3, "DEX":5, "Strike":55, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":27, "magDefCo":27, "physCo":62, "magCo":32},
+  "quet": { "Name":"Quetzalcoatl", "Align":"25-75", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":6, "INT":4, "MEN":5, "AGI":4, "DEX":5, "Strike":57, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":29, "physCo":62, "magCo":48},
+  "flar": { "Name":"Flarebrass", "Align":"25-75", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":6, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":58, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":29, "physCo":63, "magCo":49},
+  "azhi": { "Name":"Ahzi Dahaka", "Align":"25-75", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":8, "STR":7, "VIT":7, "INT":4, "MEN":5, "AGI":3, "DEX":4, "Strike":60, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":30, "magDefCo":30, "physCo":60, "magCo":48},
+  "hydra": { "Name":"Hydra", "Align":"25-75", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":6, "INT":4, "MEN":6, "AGI":3, "DEX":5, "Strike":58, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":29, "magDefCo":31, "physCo":61, "magCo":49},
+  "baha": { "Name":"Bahamut", "Align":"75+", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":7, "INT":5, "MEN":5, "AGI":3, "DEX":4, "Strike":59, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":29, "magDefCo":31, "physCo":62, "magCo":50},
+  "tiam": { "Name":"Tiamat", "Align":"00-25", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":7, "STR":6, "VIT":6, "INT":5, "MEN":5, "AGI":3, "DEX":5, "Strike":58, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":30, "physCo":63, "magCo":49},
+  "wyrm": { "Name":"Wyrm", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":4, "STR":5, "VIT":5, "INT":3, "MEN":3, "AGI":5, "DEX":4, "Strike":50, "Wind":50, "Fire":55, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":25, "physCo":57, "magCo":26},
+  "wyv": { "Name":"Wyvern", "Align":"?", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":5, "INT":3, "MEN":4, "AGI":6, "DEX":4, "Strike":53, "Wind":50, "Fire":58, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":26, "magDefCo":26, "physCo":59, "magCo":46},
+  "grif": { "Name":"Griffin", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":4, "STR":4, "VIT":4, "INT":3, "MEN":3, "AGI":6, "DEX":4, "Strike":50, "Wind":55, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":24, "magDefCo":24, "physCo":56, "magCo":41},
+  "opi": { "Name":"Opinincus", "Align":"?", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":5, "INT":4, "MEN":4, "AGI":6, "DEX":5, "Strike":52, "Wind":58, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":26, "magDefCo":25, "physCo":57, "magCo":44},
+  "cock": { "Name":"Cockatrice", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":5, "INT":2, "MEN":3, "AGI":6, "DEX":6, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":30, "physCo":57, "magCo":42},
+  "sphinx": { "Name":"Sphinx", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":4, "STR":4, "VIT":4, "INT":6, "MEN":5, "AGI":5, "DEX":5, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":24, "magDefCo":35, "physCo":52, "magCo":54},
+  "hound": { "Name":"Hellhound", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":5, "INT":4, "MEN":3, "AGI":4, "DEX":3, "Strike":52, "Wind":50, "Fire":55, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":27, "magDefCo":25, "physCo":60, "magCo":26},
+  "cerb": { "Name":"Cerberus", "Align":"?", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":5, "INT":5, "MEN":3, "AGI":4, "DEX":3, "Strike":55, "Wind":50, "Fire":58, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":28, "magDefCo":28, "physCo":62, "magCo":46},
+  "golem": { "Name":"Golem", "Align":"-", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":6, "INT":3, "MEN":3, "AGI":3, "DEX":4, "Strike":65, "Wind":48, "Fire":50, "Earth":78, "Water":58, "Virtue":50, "Bane":50, "physDefCo":40, "magDefCo":42, "physCo":50, "magCo":26},
+  "sgolem": { "Name":"Stone Golem", "Align":"*", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":5, "VIT":7, "INT":3, "MEN":4, "AGI":3, "DEX":4, "Strike":66, "Wind":42, "Fire":50, "Earth":82, "Water":50, "Virtue":48, "Bane":58, "physDefCo":42, "magDefCo":44, "physCo":51, "magCo":26},
+  "bgolem": { "Name":"Baldr Golem", "Align":"*", "UL":"-", "UR":"-", "LL":"-", "LR":"-", "HP":5, "STR":6, "VIT":7, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":68, "Wind":75, "Fire":72, "Earth":55, "Water":48, "Virtue":60, "Bane":45, "physDefCo":44, "magDefCo":47, "physCo":53, "magCo":26},
+  "magnus": { "Name":"Magnus", "Align":"-", "UL":"Short Sword", "UR":"Plate Mail", "LL":"Blue Sash", "LR":"-", "HP":5, "STR":5, "VIT":3, "INT":4, "MEN":3, "AGI":3, "DEX":3, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":25, "magDefCo":24, "physCo":55, "magCo":50},
+  "magnus3": { "Name":"Magnus ch3", "Align":"*", "UL":"Baldr Sword", "UR":"Baldr Mail", "LL":"Blue Sash", "LR":"-", "HP":5, "STR":5, "VIT":3, "INT":4, "MEN":4, "AGI":3, "DEX":4, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":26, "magDefCo":26, "physCo":58, "magCo":47},
+  "magnus4": { "Name":"Magnus ch4", "Align":"*", "UL":"Baldr Sword", "UR":"Baldr Armor", "LL":"Blue Sash", "LR":"-", "HP":6, "STR":6, "VIT":4, "INT":4, "MEN":4, "AGI":4, "DEX":5, "Strike":50, "Wind":55, "Fire":55, "Earth":55, "Water":55, "Virtue":55, "Bane":55, "physDefCo":29, "magDefCo":27, "physCo":60, "magCo":48},
+  "dio": { "Name":"Dio", "Align":"-", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"Blue Sash", "LR":"-", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":4, "AGI":4, "DEX":3, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":55, "Bane":48, "physDefCo":26, "magDefCo":25, "physCo":55, "magCo":31},
+  "dio3": { "Name":"Dio ch3", "Align":"*", "UL":"Blessed Sword", "UR":"Baldr Armor", "LL":"Blue Sash", "LR":"-", "HP":6, "STR":6, "VIT":5, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":55, "Bane":50, "physDefCo":28, "magDefCo":27, "physCo":58, "magCo":44},
+  "leia": { "Name":"Leia", "Align":"-", "UL":"Spear", "UR":"Breastplate", "LL":"Round Shield", "LR":"-", "HP":4, "STR":4, "VIT":4, "INT":4, "MEN":4, "AGI":4, "DEX":4, "Strike":52, "Wind":60, "Fire":53, "Earth":53, "Water":53, "Virtue":58, "Bane":50, "physDefCo":24, "magDefCo":27, "physCo":50, "magCo":50},
+  "leia3": { "Name":"Leia ch3", "Align":"*", "UL":"Thunder Spear", "UR":"Baldr Mail", "LL":"Buckler", "LR":"-", "HP":5, "STR":5, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":62, "Fire":55, "Earth":55, "Water":55, "Virtue":60, "Bane":52, "physDefCo":25, "magDefCo":30, "physCo":54, "magCo":52},
+  "dest": { "Name":"Destin", "Align":"-", "UL":"Sigmund", "UR":"Phoenix Mail", "LL":"Tunic", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":29, "magDefCo":29, "physCo":61, "magCo":48},
+  "debo": { "Name":"Debonair", "Align":"-", "UL":"Sonic Blade", "UR":"Breidablick", "LL":"Tunic", "LR":"-", "HP":6, "STR":6, "VIT":4, "INT":4, "MEN":4, "AGI":4, "DEX":5, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":53, "Bane":53, "physDefCo":27, "magDefCo":29, "physCo":59, "magCo":48},
+  "gilb": { "Name":"Gilbert", "Align":"00-45", "UL":"Rupture Rose", "UR":"Hard Leather", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":3, "MEN":4, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":26, "magDefCo":23, "physCo":57, "magCo":33},
+  "aisha": { "Name":"Aisha", "Align":"65+", "UL":"Baldr Mace", "UR":"Robe of the Wise", "LL":"-", "LR":"Rosary", "HP":5, "STR":3, "VIT":4, "INT":5, "MEN":6, "AGI":3, "DEX":3, "Strike":50, "Wind":54, "Fire":54, "Earth":54, "Water":54, "Virtue":59, "Bane":49, "physDefCo":24, "magDefCo":36, "physCo":43, "magCo":44},
+  "sera": { "Name":"Saradin", "Align":"-", "UL":"Hemlock", "UR":"Magician's Robe", "LL":"Spellbook", "LR":"Amulet", "HP":4, "STR":3, "VIT":3, "INT":7, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":55, "Fire":55, "Earth":55, "Water":55, "Virtue":55, "Bane":60, "physDefCo":21, "magDefCo":33, "physCo":38, "magCo":45},
+  "vad": { "Name":"Vad", "Align":"-", "UL":"Touelno", "UR":"Thunder Chain", "LL":"-", "LR":"Hachigane", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":4, "AGI":6, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":23, "magDefCo":26, "physCo":54, "magCo":42},
+  "euro": { "Name":"Europea", "Align":"-", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"Buckler", "LR":"Baldr Helm", "HP":5, "STR":5, "VIT":4, "INT":4, "MEN":5, "AGI":4, "DEX":4, "Strike":48, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":27, "physCo":58, "magCo":38},
+  "biske": { "Name":"Biske Day", "Align":"-", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":4, "MEN":5, "AGI":5, "DEX":5, "Strike":48, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":25, "magDefCo":24, "physCo":55, "magCo":31},
+  "biskeN": { "Name":"Biske Night", "Align":"-", "UL":"Baldr Sword", "UR":"Plate Armor", "LL":"-", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":4, "MEN":5, "AGI":5, "DEX":5, "Strike":50, "Wind":55, "Fire":55, "Earth":55, "Water":55, "Virtue":50, "Bane":60, "physDefCo":33, "magDefCo":31, "physCo":62, "magCo":32},
+  "ank": { "Name":"Ankiseth", "Align":"-", "UL":"Blessed Sword", "UR":"Plate Mail", "LL":"Blue Sash", "LR":"-", "HP":6, "STR":6, "VIT":6, "INT":5, "MEN":5, "AGI":4, "DEX":5, "Strike":50, "Wind":53, "Fire":53, "Earth":53, "Water":53, "Virtue":55, "Bane":53, "physDefCo":28, "magDefCo":30, "physCo":58, "magCo":49},
+  "yum": { "Name":"Yumil", "Align":"-", "UL":"Clau Solace", "UR":"Quilted Cloth", "LL":"Breast Leather", "LR":"-", "HP":5, "STR":4, "VIT":6, "INT":6, "MEN":5, "AGI":5, "DEX":6, "Strike":52, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":26, "magDefCo":32, "physCo":50, "magCo":58},
+  "troi": { "Name":"Troi", "Align":"20-80", "UL":"Spear", "UR":"Plate Mail", "LL":"Large Shield", "LR":"Iron Helm", "HP":5, "STR":4, "VIT":5, "INT":3, "MEN":4, "AGI":3, "DEX":3, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":33, "magDefCo":24, "physCo":55, "magCo":34},
+  "ansa": { "Name":"Asnabel", "Align":"00-60", "UL":"Francisca", "UR":"Leather Armor", "LL":"-", "LR":"Iron Helm", "HP":5, "STR":5, "VIT":5, "INT":3, "MEN":4, "AGI":4, "DEX":3, "Strike":50, "Wind":50, "Fire":48, "Earth":51, "Water":50, "Virtue":50, "Bane":50, "physDefCo":30, "magDefCo":25, "physCo":63, "magCo":29},
+  "ketr": { "Name":"Katreda", "Align":"45+", "UL":"Light Mace", "UR":"Cleric's Vestment", "LL":"-", "LR":"Rosary", "HP":4, "STR":3, "VIT":4, "INT":5, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":51, "Fire":51, "Earth":51, "Water":51, "Virtue":51, "Bane":51, "physDefCo":20, "magDefCo":35, "physCo":40, "magCo":48},
+  "lied": { "Name":"Leidel", "Align":"20-80", "UL":"Great Bow", "UR":"Leather Armor", "LL":"-", "LR":"Leather Hat", "HP":4, "STR":4, "VIT":4, "INT":3, "MEN":4, "AGI":4, "DEX":5, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":25, "magDefCo":28, "physCo":54, "magCo":39},
+  "shee": { "Name":"Sheen", "Align":"-", "UL":"Halt Hammer", "UR":"Leather Armor", "LL":"-", "LR":"Bandanna", "HP":5, "STR":5, "VIT":4, "INT":3, "MEN":4, "AGI":6, "DEX":4, "Strike":50, "Wind":51, "Fire":50, "Earth":51, "Water":51, "Virtue":51, "Bane":51, "physDefCo":25, "magDefCo":26, "physCo":53, "magCo":31},
+  "mere": { "Name":"Meredia", "Align":"00-45", "UL":"Arc Wand", "UR":"Fur Coat", "LL":"Spellbook", "LR":"Amulet", "HP":4, "STR":3, "VIT":3, "INT":7, "MEN":5, "AGI":3, "DEX":3, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":20, "magDefCo":49, "physCo":35, "magCo":49},
+  "paul": { "Name":"Paul", "Align":"25-75", "UL":"Fool", "UR":"Magician's Robe", "LL":"Amulet", "LR":"Bandanna", "HP":5, "STR":4, "VIT":4, "INT":5, "MEN":5, "AGI":4, "DEX":5, "Strike":50, "Wind":52, "Fire":52, "Earth":52, "Water":52, "Virtue":52, "Bane":52, "physDefCo":27, "magDefCo":41, "physCo":55, "magCo":50},
+  "carth": { "Name":"Carth", "Align":"00-40", "UL":"Satan's Bullova", "UR":"Baldr Armor", "LL":"Valiant Mantle", "LR":"Armet", "HP":6, "STR":7, "VIT":6, "INT":5, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":31, "magDefCo":30, "physCo":61, "magCo":41},
+  "deneb": { "Name":"Deneb", "Align":"00-60", "UL":"Scipplay Staff", "UR":"Witch's Dress", "LL":"Spellbook", "LR":"Pointy Hat", "HP":4, "STR":3, "VIT":3, "INT":6, "MEN":5, "AGI":4, "DEX":4, "Strike":50, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":33, "physCo":36, "magCo":56}
+};
+        data_gear= {
+  "Short Sword": { "Type":"Sword", "STR":3, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Sword": { "Type":"Sword", "STR":5, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Falchion": { "Type":"Sword", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Flamberge": { "Type":"Sword", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Fafnir": { "Type":"Sword", "STR":22, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sum Mannus": { "Type":"Sword", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Notos": { "Type":"Sword", "STR":19, "INT":0, "AGI":5, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-2, "Fire":0, "Earth":7, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sword of Firedrake": { "Type":"Sword", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Laevateinn": { "Type":"Sword", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Glamdring": { "Type":"Sword", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Stone Sword": { "Type":"Sword", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":5, "MEN":0, "Strike":0, "Wind":4, "Fire":0, "Earth":-1, "Water":0, "Virtue":0, "Bane":0, "Levelup":"VIT", "Static":"-"},
+  "Adamant Katana": { "Type":"Sword", "STR":16, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ice Blade": { "Type":"Sword", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Nephrite Sword": { "Type":"Sword", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Blessed Sword": { "Type":"Sword", "STR":9, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":3, "Levelup":"-", "Static":"-"},
+  "Penitence": { "Type":"Sword", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Oracion": { "Type":"Sword", "STR":21, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"MEN", "Static":"-"},
+  "Evil Blade": { "Type":"Sword", "STR":17, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"-"},
+  "Dainslaif": { "Type":"Sword", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":4, "Bane":-1, "Levelup":"-", "Static":"-"},
+  "Noish's Promise": { "Type":"Sword", "STR":15, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":11, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Knoevlfer": { "Type":"Sword", "STR":12, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Bastard Sword": { "Type":"Greatsword", "STR":6, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sword of Tiamat": { "Type":"Greatsword", "STR":15, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Claymore": { "Type":"Greatsword", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Balmung": { "Type":"Greatsword", "STR":19, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Glaive of Champion": { "Type":"Greatsword", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sigmund": { "Type":"Greatsword", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Matsukaze": { "Type":"Greatsword", "STR":12, "INT":0, "AGI":0, "DEX":4, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Iscandelvey": { "Type":"Greatsword", "STR":16, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Kagari-bi": { "Type":"Greatsword", "STR":13, "INT":0, "AGI":0, "DEX":4, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Gram": { "Type":"Greatsword", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Yomogi-u": { "Type":"Greatsword", "STR":7, "INT":0, "AGI":0, "DEX":3, "VIT":0, "MEN":0, "Strike":0, "Wind":4, "Fire":0, "Earth":-1, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Malachite Sword": { "Type":"Greatsword", "STR":12, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Yu-giri": { "Type":"Greatsword", "STR":17, "INT":0, "AGI":0, "DEX":5, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"DEX", "Static":"-"},
+  "Chaladholg": { "Type":"Greatsword", "STR":22, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Kusangi": { "Type":"Greatsword", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":2, "Levelup":"-", "Static":"-"},
+  "Durandel": { "Type":"Greatsword", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"-"},
+  "Ogre Blade": { "Type":"Greatsword", "STR":25, "INT":-4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":15, "Bane":-10, "Levelup":"-", "Static":"-"},
+  "Sonic Blade": { "Type":"Greatsword", "STR":15, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Rapier": { "Type":"Thrusting", "STR":4, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Main Gauche": { "Type":"Thrusting", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sword of Dragon Gem": { "Type":"Thrusting", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Estoc": { "Type":"Thrusting", "STR":6, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Peridot Sword": { "Type":"Thrusting", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Needle of Light": { "Type":"Thrusting", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":3, "Levelup":"-", "Static":"-"},
+  "Anbicion": { "Type":"Thrusting", "STR":17, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"AGI", "Static":"-"},
+  "Clau Solace": { "Type":"Thrusting", "STR":6, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":2, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-2, "Bane":7, "Levelup":"-", "Static":"Static"},
+  "Francisca": { "Type":"Axe/Hammer", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Halt Hammer": { "Type":"Axe/Hammer", "STR":4, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Club": { "Type":"Axe/Hammer", "STR":6, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Axe": { "Type":"Axe/Hammer", "STR":7, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Euros": { "Type":"Axe/Hammer", "STR":16, "INT":0, "AGI":5, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":6, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Gramlock": { "Type":"Axe/Hammer", "STR":23, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-5, "Earth":0, "Water":15, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Flame Flail": { "Type":"Axe/Hammer", "STR":10, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Axe of Wyrm": { "Type":"Axe/Hammer", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Aqua Hammer": { "Type":"Axe/Hammer", "STR":15, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Frozen Axe": { "Type":"Axe/Hammer", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Celestial Hammer": { "Type":"Axe/Hammer", "STR":19, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Evil Axe": { "Type":"Axe/Hammer", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":3, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bloody Cleaver": { "Type":"Axe/Hammer", "STR":21, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":10, "Bane":-4, "Levelup":"HP/STR", "Static":"-"},
+  "Warhammer": { "Type":"Two-Handed", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Paua Hammer": { "Type":"Two-Handed", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Heavy Axe": { "Type":"Two-Handed", "STR":23, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Mjollnir": { "Type":"Two-Handed", "STR":10, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Boreas": { "Type":"Two-Handed", "STR":17, "INT":0, "AGI":5, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Prox": { "Type":"Two-Handed", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Sanscion": { "Type":"Two-Handed", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":4, "Fire":0, "Earth":-1, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Yggdrasil": { "Type":"Two-Handed", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":10, "Fire":0, "Earth":-4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Urdarbrunn": { "Type":"Two-Handed", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":3, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Rune Axe": { "Type":"Two-Handed", "STR":21, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Satan's Bullova": { "Type":"Two-Handed", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":3, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Dagda's Hammer": { "Type":"Two-Handed", "STR":26, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":15, "Bane":-5, "Levelup":"-", "Static":"-"},
+  "Short Spear": { "Type":"Spear", "STR":3, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Spear": { "Type":"Spear", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Spear": { "Type":"Spear", "STR":7, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Culnrikolnne": { "Type":"Spear", "STR":15, "INT":2, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Thunder Spear": { "Type":"Spear", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Zephyros": { "Type":"Spear", "STR":12, "INT":0, "AGI":5, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":6, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Volcaetus": { "Type":"Spear", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ignis": { "Type":"Spear", "STR":21, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Earth Javelin": { "Type":"Spear", "STR":12, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Osric's Spear": { "Type":"Spear", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bentisca": { "Type":"Spear", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Holy Lance": { "Type":"Spear", "STR":18, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"-", "Static":"-"},
+  "Lance of Longinus": { "Type":"Spear", "STR":16, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Evil Spear": { "Type":"Spear", "STR":17, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":6, "Bane":-2, "Levelup":"-", "Static":"-"},
+  "Brionac": { "Type":"Spear", "STR":24, "INT":6, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":10, "Bane":-4, "Levelup":"HP/STR", "Static":"-"},
+  "Leather Whip": { "Type":"Whip", "STR":4, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Rupture Rose": { "Type":"Whip", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Whip of Exorcism": { "Type":"Whip", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Scourge of Thor": { "Type":"Whip", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Holy Comet": { "Type":"Whip", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Blood Whip": { "Type":"Whip", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":4, "Bane":-1, "Levelup":"AGI", "Static":"-"},
+  "Iron Claw": { "Type":"Claw", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Claw": { "Type":"Claw", "STR":7, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Touelno": { "Type":"Claw", "STR":12, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Lfal": { "Type":"Claw", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Berserk": { "Type":"Claw", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":4, "Fire":0, "Earth":-1, "Water":0, "Virtue":0, "Bane":0, "Levelup":"VIT", "Static":"-"},
+  "Cyanic Claw": { "Type":"Claw", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Vajra": { "Type":"Claw", "STR":17, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Black Cat": { "Type":"Claw", "STR":11, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":4, "Bane":-1, "Levelup":"-", "Static":"-"},
+  "Short Bow": { "Type":"Bow", "STR":3, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Great Bow": { "Type":"Bow", "STR":4, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Bow": { "Type":"Bow", "STR":6, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Composite Bow": { "Type":"Bow", "STR":10, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bow of Thunderbolt": { "Type":"Bow", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Conflagrant Bow": { "Type":"Bow", "STR":12, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bow of Sandstorm": { "Type":"Bow", "STR":8, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bow of Tundra": { "Type":"Bow", "STR":14, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Crescente": { "Type":"Bow", "STR":15, "INT":0, "AGI":0, "DEX":4, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"DEX", "Static":"-"},
+  "Ytival": { "Type":"Bow", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Ji'ygla's Bow": { "Type":"Bow", "STR":16, "INT":-2, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":10, "Bane":-4, "Levelup":"-", "Static":"-"},
+  "Light Mace": { "Type":"Mace", "STR":2, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Mace": { "Type":"Mace", "STR":3, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Celestial Mace": { "Type":"Mace", "STR":4, "INT":9, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Gambantein": { "Type":"Mace", "STR":3, "INT":13, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"INT", "Static":"-"},
+  "Scipplay Staff": { "Type":"Staff", "STR":1, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Arc Wand": { "Type":"Staff", "STR":3, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Hraesvelg": { "Type":"Staff", "STR":4, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Totila": { "Type":"Staff", "STR":6, "INT":8, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Jormungand": { "Type":"Staff", "STR":4, "INT":15, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"MEN", "Static":"-"},
+  "Phorusgir": { "Type":"Staff", "STR":4, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Airgetlam": { "Type":"Staff", "STR":5, "INT":12, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"INT", "Static":"-"},
+  "Kerykeion": { "Type":"Staff", "STR":4, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"-"},
+  "Hemlock": { "Type":"Staff", "STR":3, "INT":11, "AGI":0, "DEX":0, "VIT":0, "MEN":1, "Strike":0, "Wind":6, "Fire":0, "Earth":-2, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Scepter": { "Type":"Staff", "STR":1, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Marionette": { "Type":"Doll", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Fool": { "Type":"Doll", "STR":7, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Heaven's Doll": { "Type":"Doll", "STR":9, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"-", "Static":"-"},
+  "Lia Fail": { "Type":"Doll", "STR":13, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Doll of Curse": { "Type":"Doll", "STR":10, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"-"},
+  "Gallant Doll": { "Type":"Doll", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Battle Fan": { "Type":"Fan", "STR":4, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Caldia": { "Type":"Fan", "STR":7, "INT":0, "AGI":5, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":4, "Levelup":"-", "Static":"-"},
+  "Round Shield": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Buckler": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Electric Shield": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Flame Shield": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Terra Shield": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ice Shield": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Starry Sky": { "Type":"Small Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":12, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-12, "Bane":50, "Levelup":"-", "Static":"-"},
+  "Kite Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Tower Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":16, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Large Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":10, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Shield": { "Type":"Shield", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":12, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Dragon Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":10, "Wind":0, "Fire":4, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Shield of Nue": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":12, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Shield of Inferno": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":12, "Wind":2, "Fire":-3, "Earth":0, "Water":7, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Crystal Guard": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":12, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Saint's Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":4, "Strike":15, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-5, "Bane":15, "Levelup":"MEN", "Static":"-"},
+  "Ogre Shield": { "Type":"Shield", "STR":10, "INT":-5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":20, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":10, "Bane":-5, "Levelup":"-", "Static":"-"},
+  "Hallowed Shield": { "Type":"Shield", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":6, "Wind":2, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Half Armor": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Cloth Armor": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":2, "VIT":0, "MEN":2, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Leather Armor": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Hard Leather": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":6, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ninja's Garb": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":2, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Scale Armor": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":7, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Chain Mail": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Thunder Chain": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":-2, "Fire":0, "Earth":5, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Flame Leather": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Terra Armor": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":9, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ice Chain": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":5, "Earth":0, "Water":-2, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Saint's Garb": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":4, "Strike":12, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-5, "Bane":10, "Levelup":"HP/STR", "Static":"-"},
+  "Idaten's Mail": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":11, "Wind":-3, "Fire":0, "Earth":7, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Breast Leather": { "Type":"Light Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Breastplate": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Plate Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":9, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Mail": { "Type":"Armor", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":11, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Titania Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":4, "DEX":0, "VIT":0, "MEN":0, "Strike":13, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"VIT", "Static":"-"},
+  "Peregrine Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":15, "Wind":-4, "Fire":0, "Earth":10, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Phoenix Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":15, "Wind":0, "Fire":-4, "Earth":0, "Water":10, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Nathalork Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":15, "Wind":10, "Fire":0, "Earth":-4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Hwail Mail": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":15, "Wind":0, "Fire":10, "Earth":0, "Water":-4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Angelic Armor": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":6, "Strike":18, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-5, "Bane":12, "Levelup":"MEN", "Static":"-"},
+  "Bloodstained Armor": { "Type":"Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":17, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":15, "Bane":-5, "Levelup":"-", "Static":"-"},
+  "Plate Armor": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":11, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Armor": { "Type":"Full Body Armor", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":13, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Heavy Armor": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":15, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Dragon Armor": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":13, "Wind":0, "Fire":4, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Wind Armor": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":17, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Breidablick": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":17, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Rune Plate": { "Type":"Full Body Armor", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":18, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"VIT", "Static":"-"},
+  "Ogre Armor": { "Type":"Full Body Armor", "STR":10, "INT":-5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":25, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-4, "Levelup":"-", "Static":"-"},
+  "Armor of Death": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":21, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":15, "Bane":-5, "Levelup":"DEX", "Static":"-"},
+  "Southern Cross": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":20, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":3, "Levelup":"-", "Static":"-"},
+  "Jeunelune": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":5, "VIT":0, "MEN":0, "Strike":18, "Wind":-4, "Fire":0, "Earth":10, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Diadora's Song": { "Type":"Full Body Armor", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":26, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Elem Plate": { "Type":"Full Body Armor", "STR":10, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":23, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"Static"},
+  "Torn Cloth": { "Type":"Robe", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Robe": { "Type":"Robe", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Cleric's Vestment": { "Type":"Robe", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":5, "Levelup":"-", "Static":"-"},
+  "Magician's Robe": { "Type":"Robe", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Robe of the Wise": { "Type":"Robe", "STR":0, "INT":8, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Vestment of Wind": { "Type":"Robe", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":-4, "Fire":0, "Earth":10, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Vestment of Flame": { "Type":"Robe", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":-4, "Earth":0, "Water":10, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Phoenix Robe": { "Type":"Robe", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":-5, "Earth":0, "Water":15, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Vestment of Earth": { "Type":"Robe", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":10, "Fire":0, "Earth":-4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Vestment of Water": { "Type":"Robe", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":10, "Earth":0, "Water":-4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Cloak of Oath": { "Type":"Robe", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":5, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Purified Robe": { "Type":"Robe", "STR":0, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":6, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-5, "Bane":15, "Levelup":"INT", "Static":"-"},
+  "Bloodstained Robe": { "Type":"Robe", "STR":0, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":5, "Strike":6, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":15, "Bane":-5, "Levelup":"INT", "Static":"-"},
+  "Robe of Abyss": { "Type":"Robe", "STR":0, "INT":8, "AGI":0, "DEX":0, "VIT":0, "MEN":2, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":50, "Bane":-17, "Levelup":"-", "Static":"-"},
+  "Robe of Devus": { "Type":"Robe", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Old Clothing": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Plain Clothing": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Witch's Dress": { "Type":"Garment", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Fur Coat": { "Type":"Garment", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Pure-White Dress": { "Type":"Garment", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":2, "Bane":5, "Levelup":"-", "Static":"-"},
+  "Feather Suit": { "Type":"Garment", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":-2, "Fire":0, "Earth":6, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Heat-Tex": { "Type":"Garment", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":-2, "Earth":0, "Water":6, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Forest Tunic": { "Type":"Garment", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":6, "Fire":0, "Earth":-2, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Misty Coat": { "Type":"Garment", "STR":0, "INT":7, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":6, "Earth":0, "Water":-2, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Stardust": { "Type":"Garment", "STR":0, "INT":8, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":7, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"AGI", "Static":"-"},
+  "Spell Robe": { "Type":"Garment", "STR":-5, "INT":15, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"-"},
+  "Tiny Clothing": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Count's Garment": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Quilted Cloth": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Royal Garb": { "Type":"Garment", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Iron Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bone Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Armet": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Baldr Helm": { "Type":"Helm", "STR":0, "INT":1, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":5, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Dragon Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":4, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Helm of Thunderclap": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":6, "Wind":-2, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Freude Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":2, "Strike":7, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"MEN", "Static":"-"},
+  "Ogre Helm": { "Type":"Helm", "STR":5, "INT":-5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":10, "Bane":-5, "Levelup":"-", "Static":"-"},
+  "Helm of the Fearless": { "Type":"Helm", "STR":20, "INT":0, "AGI":-15, "DEX":5, "VIT":0, "MEN":0, "Strike":6, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":3, "Bane":-1, "Levelup":"-", "Static":"-"},
+  "Cross Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":2, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Jelton Helm": { "Type":"Helm", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":8, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-2, "Bane":8, "Levelup":"-", "Static":"Static"},
+  "Leather Hat": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Bandanna": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":2, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Hachigane": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Jin-gasa": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":1, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Plumed Headband": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-1, "Bane":3, "Levelup":"-", "Static":"-"},
+  "Pointy Hat": { "Type":"Headgear", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Hannya Mask": { "Type":"Headgear", "STR":0, "INT":0, "AGI":2, "DEX":0, "VIT":0, "MEN":2, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Burning Band": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":-2, "Earth":0, "Water":5, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ice Bandanna": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":5, "Earth":0, "Water":-2, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Celestial Veil": { "Type":"Headgear", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":8, "Levelup":"HP/STR", "Static":"-"},
+  "Red Branch": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":10, "VIT":0, "MEN":0, "Strike":5, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Decoy Cap": { "Type":"Headgear", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Spellbook": { "Type":"Spellbook", "STR":0, "INT":1, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Book of Wind": { "Type":"Spellbook", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-1, "Fire":0, "Earth":4, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Book of Flame": { "Type":"Spellbook", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-1, "Earth":0, "Water":4, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Book of Earth": { "Type":"Spellbook", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":4, "Fire":0, "Earth":-1, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Book of Water": { "Type":"Spellbook", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":4, "Earth":0, "Water":-1, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Book of Bane": { "Type":"Spellbook", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":4, "Bane":-1, "Levelup":"-", "Static":"-"},
+  "Tempest": { "Type":"Spellbook", "STR":-2, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-5, "Fire":0, "Earth":10, "Water":0, "Virtue":0, "Bane":0, "Levelup":"INT", "Static":"-"},
+  "Annihilation": { "Type":"Spellbook", "STR":-2, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-5, "Earth":0, "Water":10, "Virtue":0, "Bane":0, "Levelup":"INT", "Static":"-"},
+  "Meteor Strike": { "Type":"Spellbook", "STR":-2, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":10, "Fire":0, "Earth":-5, "Water":0, "Virtue":0, "Bane":0, "Levelup":"INT", "Static":"-"},
+  "White Mute": { "Type":"Spellbook", "STR":-2, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":10, "Earth":0, "Water":-5, "Virtue":0, "Bane":0, "Levelup":"INT", "Static":"-"},
+  "Amulet": { "Type":"Accessory", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Ring of Eloquence": { "Type":"Accessory", "STR":-10, "INT":10, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Firecrest": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":20, "Wind":20, "Fire":20, "Earth":20, "Water":20, "Virtue":20, "Bane":20, "Levelup":"All", "Static":"-"},
+  "Bell of Thunder": { "Type":"Accessory", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":-3, "Fire":0, "Earth":8, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Fang of Firedrake": { "Type":"Accessory", "STR":3, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":-3, "Earth":0, "Water":8, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Naga Ring": { "Type":"Accessory", "STR":5, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":8, "Fire":0, "Earth":-3, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Snow Orb": { "Type":"Accessory", "STR":0, "INT":5, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":8, "Earth":0, "Water":-3, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Rosary": { "Type":"Accessory", "STR":0, "INT":3, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":2, "Levelup":"-", "Static":"-"},
+  "Elder's Sign": { "Type":"Accessory", "STR":0, "INT":6, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"-"},
+  "Feather of Archangel": { "Type":"Accessory", "STR":0, "INT":12, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-5, "Bane":15, "Levelup":"AGI", "Static":"-"},
+  "Ring of Branding": { "Type":"Accessory", "STR":-6, "INT":13, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-6, "Levelup":"DEX", "Static":"-"},
+  "Angel's Brooch": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":2, "Levelup":"-", "Static":"-"},
+  "Rai's Tear": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Runic Cape": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":5, "Fire":5, "Earth":5, "Water":5, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Glass Pumpkin": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":1, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Dream Tiara": { "Type":"Accessory", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":8, "Bane":-3, "Levelup":"-", "Static":"Static"},
+  "Royal Crown": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Bloody Emblem": { "Type":"Accessory", "STR":0, "INT":4, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-3, "Bane":8, "Levelup":"-", "Static":"Static"},
+  "Ring of the Dead": { "Type":"Accessory", "STR":0, "INT":6, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":0, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":-4, "Bane":10, "Levelup":"-", "Static":"Static"},
+  "Valiant Mantle": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"-"},
+  "Fur-lined Mantle": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Majestic Mantle": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":2, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Blue Sash": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":1, "Strike":1, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Tunic": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":3, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"},
+  "Guard Tunic": { "Type":"Accessory", "STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":4, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup":"-", "Static":"Static"}
+};
+	data_map = {
+        "1": "1. Tenne Plains",
+        "2": "2. Volmus Mine I",
+        "3": "3. Crenel Canyon I",
+        "4": "4. Mylesia I",
+        "5": "5. Zenobia Border",
+        "6": "6. Volmus Mine II",
+        "7": "7. Gunther Piedmont",
+        "8": "8. Dardunnelles I",
+        "9": "9. Alba",
+        "10": "10. Crenel Canyon II",
+        "11": "11. Mylesia II",
+        "12": "12. Soathon Highland",
+        "13": "13. Sable Lowlands",
+        "14": "14. Audvera Heights",
+        "15": "15. Mnt Ithaca",
+        "16": "16. Mnt Keryoleth I",
+        "17": "17. Azure Plains",
+        "18": "18. Wentinus I",
+        "19": "19. Dardunnelles II",
+        "20": "20. Gules Hills I",
+        "21": "21. Fair Heights",
+        "22": "22. Vert Plateau",
+        //intentionally no "23"
+        "24": "24. Capitrium",
+        "25": "25. Celesis",
+        "26": "26. Tremos Mnts II",
+        "27": "27. Berthe Temple I",
+        "28": "28. Berthe Temple II",
+        "29": "29. Gules Hills II",
+        "30": "30. Romulus",
+        "31": "31. Fort Romulus",
+        "32": "32. Ptia",
+        "33": "33. Blue Basilica",
+        "34": "34. Tundra of Argent",
+        "35": "35. Barpheth",
+        "36": "36. Tybell",
+        "37": "37. Latium",
+        "38": "38. Winnea",
+        "39": "39. Aurua Plains I",
+        "40": "40. Wentinus II",
+        "41": "41. Castle Talpaea",
+        "42": "42. Mnt Keryoleth II",
+        "43": "43. Aurua Plains II"
+      };
+    </script>
+    <script>
+  //GOOGLE DRIVE FUCKING WITH ME
+  //So have to inlude this file here:
+/*!
+ * jQuery blockUI plugin
+ * Version 2.70.0-2014.11.23
+ * Requires jQuery v1.7 or later
+ *
+ * Examples at: http://malsup.com/jquery/block/
+ * Copyright (c) 2007-2013 M. Alsup
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Thanks to Amir-Hossein Sobhi for some excellent contributions!
+ */
+
+;(function() {
+/*jshint eqeqeq:false curly:false latedef:false */
+"use strict";
+
+	function setup($) {
+		$.fn._fadeIn = $.fn.fadeIn;
+
+		var noOp = $.noop || function() {};
+
+		// this bit is to ensure we don't call setExpression when we shouldn't (with extra muscle to handle
+		// confusing userAgent strings on Vista)
+		var msie = /MSIE/.test(navigator.userAgent);
+		var ie6  = /MSIE 6.0/.test(navigator.userAgent) && ! /MSIE 8.0/.test(navigator.userAgent);
+		var mode = document.documentMode || 0;
+		var setExpr = $.isFunction( document.createElement('div').style.setExpression );
+
+		// global $ methods for blocking/unblocking the entire page
+		$.blockUI   = function(opts) { install(window, opts); };
+		$.unblockUI = function(opts) { remove(window, opts); };
+
+		// convenience method for quick growl-like notifications  (http://www.google.com/search?q=growl)
+		$.growlUI = function(title, message, timeout, onClose) {
+			var $m = $('<div class="growlUI"></div>');
+			if (title) $m.append('<h1>'+title+'</h1>');
+			if (message) $m.append('<h2>'+message+'</h2>');
+			if (timeout === undefined) timeout = 3000;
+
+			// Added by konapun: Set timeout to 30 seconds if this growl is moused over, like normal toast notifications
+			var callBlock = function(opts) {
+				opts = opts || {};
+
+				$.blockUI({
+					message: $m,
+					fadeIn : typeof opts.fadeIn  !== 'undefined' ? opts.fadeIn  : 700,
+					fadeOut: typeof opts.fadeOut !== 'undefined' ? opts.fadeOut : 1000,
+					timeout: typeof opts.timeout !== 'undefined' ? opts.timeout : timeout,
+					centerY: false,
+					showOverlay: false,
+					onUnblock: onClose,
+					css: $.blockUI.defaults.growlCSS
+				});
+			};
+
+			callBlock();
+			var nonmousedOpacity = $m.css('opacity');
+			$m.mouseover(function() {
+				callBlock({
+					fadeIn: 0,
+					timeout: 30000
+				});
+
+				var displayBlock = $('.blockMsg');
+				displayBlock.stop(); // cancel fadeout if it has started
+				displayBlock.fadeTo(300, 1); // make it easier to read the message by removing transparency
+			}).mouseout(function() {
+				$('.blockMsg').fadeOut(1000);
+			});
+			// End konapun additions
+		};
+
+		// plugin method for blocking element content
+		$.fn.block = function(opts) {
+			if ( this[0] === window ) {
+				$.blockUI( opts );
+				return this;
+			}
+			var fullOpts = $.extend({}, $.blockUI.defaults, opts || {});
+			this.each(function() {
+				var $el = $(this);
+				if (fullOpts.ignoreIfBlocked && $el.data('blockUI.isBlocked'))
+					return;
+				$el.unblock({ fadeOut: 0 });
+			});
+
+			return this.each(function() {
+				if ($.css(this,'position') == 'static') {
+					this.style.position = 'relative';
+					$(this).data('blockUI.static', true);
+				}
+				this.style.zoom = 1; // force 'hasLayout' in ie
+				install(this, opts);
+			});
+		};
+
+		// plugin method for unblocking element content
+		$.fn.unblock = function(opts) {
+			if ( this[0] === window ) {
+				$.unblockUI( opts );
+				return this;
+			}
+			return this.each(function() {
+				remove(this, opts);
+			});
+		};
+
+		$.blockUI.version = 2.70; // 2nd generation blocking at no extra cost!
+
+		// override these in your code to change the default behavior and style
+		$.blockUI.defaults = {
+			// message displayed when blocking (use null for no message)
+			message:  '<h1>Please wait...</h1>',
+
+			title: null,		// title string; only used when theme == true
+			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
+
+			theme: false, // set to true to use with jQuery UI themes
+
+			// styles for the message when blocking; if you wish to disable
+			// these and use an external stylesheet then do this in your code:
+			// $.blockUI.defaults.css = {};
+			css: {
+				padding:	0,
+				margin:		0,
+				//width:		'40%',
+				top:		'20%',
+				left:		'30%',
+				textAlign:	'center',
+				color:		'#000',
+				border:		'3px solid #aaa',
+				backgroundColor:'#fff',
+				//cursor:		'wait'
+			},
+
+			// minimal style set used when themes are used
+			themedCSS: {
+				width:	'30%',
+				top:	'40%',
+				left:	'35%'
+			},
+
+			// styles for the overlay
+			overlayCSS:  {
+				backgroundColor:	'#000',
+				opacity:			0.6,
+				//cursor:				'wait'
+			},
+
+			// style to replace wait cursor before unblocking to correct issue
+			// of lingering wait cursor
+			cursorReset: 'default',
+
+			// styles applied when using $.growlUI
+			growlCSS: {
+				width:		'350px',
+				top:		'10px',
+				left:		'',
+				right:		'10px',
+				border:		'none',
+				padding:	'5px',
+				opacity:	0.6,
+				cursor:		'default',
+				color:		'#fff',
+				backgroundColor: '#000',
+				'-webkit-border-radius':'10px',
+				'-moz-border-radius':	'10px',
+				'border-radius':		'10px'
+			},
+
+			// IE issues: 'about:blank' fails on HTTPS and javascript:false is s-l-o-w
+			// (hat tip to Jorge H. N. de Vasconcelos)
+			/*jshint scripturl:true */
+			iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank',
+
+			// force usage of iframe in non-IE browsers (handy for blocking applets)
+			forceIframe: false,
+
+			// z-index for the blocking overlay
+			baseZ: 1000,
+
+			// set these to true to have the message automatically centered
+			centerX: true, // <-- only effects element blocking (page block controlled via css above)
+			centerY: true,
+
+			// allow body element to be stetched in ie6; this makes blocking look better
+			// on "short" pages.  disable if you wish to prevent changes to the body height
+			allowBodyStretch: true,
+
+			// enable if you want key and mouse events to be disabled for content that is blocked
+			bindEvents: true,
+
+			// be default blockUI will supress tab navigation from leaving blocking content
+			// (if bindEvents is true)
+			constrainTabKey: true,
+
+			// fadeIn time in millis; set to 0 to disable fadeIn on block
+			fadeIn:  100,
+
+			// fadeOut time in millis; set to 0 to disable fadeOut on unblock
+			fadeOut:  100,
+
+			// time in millis to wait before auto-unblocking; set to 0 to disable auto-unblock
+			timeout: 0,
+
+			// disable if you don't want to show the overlay
+			showOverlay: true,
+
+			// if true, focus will be placed in the first available input field when
+			// page blocking
+			focusInput: true,
+
+            // elements that can receive focus
+            focusableElements: ':input:enabled:visible',
+
+			// suppresses the use of overlay styles on FF/Linux (due to performance issues with opacity)
+			// no longer needed in 2012
+			// applyPlatformOpacityRules: true,
+
+			// callback method invoked when fadeIn has completed and blocking message is visible
+			onBlock: null,
+
+			// callback method invoked when unblocking has completed; the callback is
+			// passed the element that has been unblocked (which is the window object for page
+			// blocks) and the options that were passed to the unblock call:
+			//	onUnblock(element, options)
+			onUnblock: null,
+
+			// callback method invoked when the overlay area is clicked.
+			// setting this will turn the cursor to a pointer, otherwise cursor defined in overlayCss will be used.
+			onOverlayClick: null,
+
+			// don't ask; if you really must know: http://groups.google.com/group/jquery-en/browse_thread/thread/36640a8730503595/2f6a79a77a78e493#2f6a79a77a78e493
+			quirksmodeOffsetHack: 4,
+
+			// class name of the message block
+			blockMsgClass: 'blockMsg',
+
+			// if it is already blocked, then ignore it (don't unblock and reblock)
+			ignoreIfBlocked: false
+		};
+
+		// private data and functions follow...
+
+		var pageBlock = null;
+		var pageBlockEls = [];
+
+		function install(el, opts) {
+			var css, themedCSS;
+			var full = (el == window);
+			var msg = (opts && opts.message !== undefined ? opts.message : undefined);
+			opts = $.extend({}, $.blockUI.defaults, opts || {});
+
+			if (opts.ignoreIfBlocked && $(el).data('blockUI.isBlocked'))
+				return;
+
+			opts.overlayCSS = $.extend({}, $.blockUI.defaults.overlayCSS, opts.overlayCSS || {});
+			css = $.extend({}, $.blockUI.defaults.css, opts.css || {});
+			if (opts.onOverlayClick)
+				opts.overlayCSS.cursor = 'pointer';
+
+			themedCSS = $.extend({}, $.blockUI.defaults.themedCSS, opts.themedCSS || {});
+			msg = msg === undefined ? opts.message : msg;
+
+			// remove the current block (if there is one)
+			if (full && pageBlock)
+				remove(window, {fadeOut:0});
+
+			// if an existing element is being used as the blocking content then we capture
+			// its current place in the DOM (and current display style) so we can restore
+			// it when we unblock
+			if (msg && typeof msg != 'string' && (msg.parentNode || msg.jquery)) {
+				var node = msg.jquery ? msg[0] : msg;
+				var data = {};
+				$(el).data('blockUI.history', data);
+				data.el = node;
+				data.parent = node.parentNode;
+				data.display = node.style.display;
+				data.position = node.style.position;
+				if (data.parent)
+					data.parent.removeChild(node);
+			}
+
+			$(el).data('blockUI.onUnblock', opts.onUnblock);
+			var z = opts.baseZ;
+
+			// blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
+			// layer1 is the iframe layer which is used to supress bleed through of underlying content
+			// layer2 is the overlay layer which has opacity and a wait cursor (by default)
+			// layer3 is the message content that is displayed while blocking
+			var lyr1, lyr2, lyr3, s;
+			if (msie || opts.forceIframe)
+				lyr1 = $('<iframe class="blockUI" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="'+opts.iframeSrc+'"></iframe>');
+			else
+				lyr1 = $('<div class="blockUI" style="display:none"></div>');
+
+			if (opts.theme)
+				lyr2 = $('<div class="blockUI blockOverlay ui-widget-overlay" style="z-index:'+ (z++) +';display:none"></div>');
+			else
+				lyr2 = $('<div class="blockUI blockOverlay" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>');
+
+			if (opts.theme && full) {
+				s = '<div class="blockUI ' + opts.blockMsgClass + ' blockPage ui-dialog ui-widget ui-corner-all" style="z-index:'+(z+10)+';display:none;position:fixed">';
+				if ( opts.title ) {
+					s += '<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">'+(opts.title || '&nbsp;')+'</div>';
+				}
+				s += '<div class="ui-widget-content ui-dialog-content"></div>';
+				s += '</div>';
+			}
+			else if (opts.theme) {
+				s = '<div class="blockUI ' + opts.blockMsgClass + ' blockElement ui-dialog ui-widget ui-corner-all" style="z-index:'+(z+10)+';display:none;position:absolute">';
+				if ( opts.title ) {
+					s += '<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">'+(opts.title || '&nbsp;')+'</div>';
+				}
+				s += '<div class="ui-widget-content ui-dialog-content"></div>';
+				s += '</div>';
+			}
+			else if (full) {
+				s = '<div class="blockUI ' + opts.blockMsgClass + ' blockPage" style="z-index:'+(z+10)+';display:none;position:fixed"></div>';
+			}
+			else {
+				s = '<div class="blockUI ' + opts.blockMsgClass + ' blockElement" style="z-index:'+(z+10)+';display:none;position:absolute"></div>';
+			}
+			lyr3 = $(s);
+
+			// if we have a message, style it
+			if (msg) {
+				if (opts.theme) {
+					lyr3.css(themedCSS);
+					lyr3.addClass('ui-widget-content');
+				}
+				else
+					lyr3.css(css);
+			}
+
+			// style the overlay
+			if (!opts.theme /*&& (!opts.applyPlatformOpacityRules)*/)
+				lyr2.css(opts.overlayCSS);
+			lyr2.css('position', full ? 'fixed' : 'absolute');
+
+			// make iframe layer transparent in IE
+			if (msie || opts.forceIframe)
+				lyr1.css('opacity',0.0);
+
+			//$([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
+			var layers = [lyr1,lyr2,lyr3], $par = full ? $('body') : $(el);
+			$.each(layers, function() {
+				this.appendTo($par);
+			});
+
+			if (opts.theme && opts.draggable && $.fn.draggable) {
+				lyr3.draggable({
+					handle: '.ui-dialog-titlebar',
+					cancel: 'li'
+				});
+			}
+
+			// ie7 must use absolute positioning in quirks mode and to account for activex issues (when scrolling)
+			var expr = setExpr && (!$.support.boxModel || $('object,embed', full ? null : el).length > 0);
+			if (ie6 || expr) {
+				// give body 100% height
+				if (full && opts.allowBodyStretch && $.support.boxModel)
+					$('html,body').css('height','100%');
+
+				// fix ie6 issue when blocked element has a border width
+				if ((ie6 || !$.support.boxModel) && !full) {
+					var t = sz(el,'borderTopWidth'), l = sz(el,'borderLeftWidth');
+					var fixT = t ? '(0 - '+t+')' : 0;
+					var fixL = l ? '(0 - '+l+')' : 0;
+				}
+
+				// simulate fixed position
+				$.each(layers, function(i,o) {
+					var s = o[0].style;
+					s.position = 'absolute';
+					if (i < 2) {
+						if (full)
+							s.setExpression('height','Math.max(document.body.scrollHeight, document.body.offsetHeight) - (jQuery.support.boxModel?0:'+opts.quirksmodeOffsetHack+') + "px"');
+						else
+							s.setExpression('height','this.parentNode.offsetHeight + "px"');
+						if (full)
+							s.setExpression('width','jQuery.support.boxModel && document.documentElement.clientWidth || document.body.clientWidth + "px"');
+						else
+							s.setExpression('width','this.parentNode.offsetWidth + "px"');
+						if (fixL) s.setExpression('left', fixL);
+						if (fixT) s.setExpression('top', fixT);
+					}
+					else if (opts.centerY) {
+						if (full) s.setExpression('top','(document.documentElement.clientHeight || document.body.clientHeight) / 2 - (this.offsetHeight / 2) + (blah = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"');
+						s.marginTop = 0;
+					}
+					else if (!opts.centerY && full) {
+						var top = (opts.css && opts.css.top) ? parseInt(opts.css.top, 10) : 0;
+						var expression = '((document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + '+top+') + "px"';
+						s.setExpression('top',expression);
+					}
+				});
+			}
+
+			// show the message
+			if (msg) {
+				if (opts.theme)
+					lyr3.find('.ui-widget-content').append(msg);
+				else
+					lyr3.append(msg);
+				if (msg.jquery || msg.nodeType)
+					$(msg).show();
+			}
+
+			if ((msie || opts.forceIframe) && opts.showOverlay)
+				lyr1.show(); // opacity is zero
+			if (opts.fadeIn) {
+				var cb = opts.onBlock ? opts.onBlock : noOp;
+				var cb1 = (opts.showOverlay && !msg) ? cb : noOp;
+				var cb2 = msg ? cb : noOp;
+				if (opts.showOverlay)
+					lyr2._fadeIn(opts.fadeIn, cb1);
+				if (msg)
+					lyr3._fadeIn(opts.fadeIn, cb2);
+			}
+			else {
+				if (opts.showOverlay)
+					lyr2.show();
+				if (msg)
+					lyr3.show();
+				if (opts.onBlock)
+					opts.onBlock.bind(lyr3)();
+			}
+
+			// bind key and mouse events
+			bind(1, el, opts);
+
+			if (full) {
+				pageBlock = lyr3[0];
+				pageBlockEls = $(opts.focusableElements,pageBlock);
+				if (opts.focusInput)
+					setTimeout(focus, 20);
+			}
+			else
+				center(lyr3[0], opts.centerX, opts.centerY);
+
+			if (opts.timeout) {
+				// auto-unblock
+				var to = setTimeout(function() {
+					if (full)
+						$.unblockUI(opts);
+					else
+						$(el).unblock(opts);
+				}, opts.timeout);
+				$(el).data('blockUI.timeout', to);
+			}
+		}
+
+		// remove the block
+		function remove(el, opts) {
+			var count;
+			var full = (el == window);
+			var $el = $(el);
+			var data = $el.data('blockUI.history');
+			var to = $el.data('blockUI.timeout');
+			if (to) {
+				clearTimeout(to);
+				$el.removeData('blockUI.timeout');
+			}
+			opts = $.extend({}, $.blockUI.defaults, opts || {});
+			bind(0, el, opts); // unbind events
+
+			if (opts.onUnblock === null) {
+				opts.onUnblock = $el.data('blockUI.onUnblock');
+				$el.removeData('blockUI.onUnblock');
+			}
+
+			var els;
+			if (full) // crazy selector to handle odd field errors in ie6/7
+				els = $('body').children().filter('.blockUI').add('body > .blockUI');
+			else
+				els = $el.find('>.blockUI');
+
+			// fix cursor issue
+			if ( opts.cursorReset ) {
+				if ( els.length > 1 )
+					els[1].style.cursor = opts.cursorReset;
+				if ( els.length > 2 )
+					els[2].style.cursor = opts.cursorReset;
+			}
+
+			if (full)
+				pageBlock = pageBlockEls = null;
+
+			if (opts.fadeOut) {
+				count = els.length;
+				els.stop().fadeOut(opts.fadeOut, function() {
+					if ( --count === 0)
+						reset(els,data,opts,el);
+				});
+			}
+			else
+				reset(els, data, opts, el);
+		}
+
+		// move blocking element back into the DOM where it started
+		function reset(els,data,opts,el) {
+			var $el = $(el);
+			if ( $el.data('blockUI.isBlocked') )
+				return;
+
+			els.each(function(i,o) {
+				// remove via DOM calls so we don't lose event handlers
+				if (this.parentNode)
+					this.parentNode.removeChild(this);
+			});
+
+			if (data && data.el) {
+				data.el.style.display = data.display;
+				data.el.style.position = data.position;
+				data.el.style.cursor = 'default'; // #59
+				if (data.parent)
+					data.parent.appendChild(data.el);
+				$el.removeData('blockUI.history');
+			}
+
+			if ($el.data('blockUI.static')) {
+				$el.css('position', 'static'); // #22
+			}
+
+			if (typeof opts.onUnblock == 'function')
+				opts.onUnblock(el,opts);
+
+			// fix issue in Safari 6 where block artifacts remain until reflow
+			var body = $(document.body), w = body.width(), cssW = body[0].style.width;
+			body.width(w-1).width(w);
+			body[0].style.width = cssW;
+		}
+
+		// bind/unbind the handler
+		function bind(b, el, opts) {
+			var full = el == window, $el = $(el);
+
+			// don't bother unbinding if there is nothing to unbind
+			if (!b && (full && !pageBlock || !full && !$el.data('blockUI.isBlocked')))
+				return;
+
+			$el.data('blockUI.isBlocked', b);
+
+			// don't bind events when overlay is not in use or if bindEvents is false
+			if (!full || !opts.bindEvents || (b && !opts.showOverlay))
+				return;
+
+			// bind anchors and inputs for mouse and key events
+			var events = 'mousedown mouseup keydown keypress keyup touchstart touchend touchmove';
+			if (b)
+				$(document).bind(events, opts, handler);
+			else
+				$(document).unbind(events, handler);
+
+		// former impl...
+		//		var $e = $('a,:input');
+		//		b ? $e.bind(events, opts, handler) : $e.unbind(events, handler);
+		}
+
+		// event handler to suppress keyboard/mouse events when blocking
+		function handler(e) {
+			// allow tab navigation (conditionally)
+			if (e.type === 'keydown' && e.keyCode && e.keyCode == 9) {
+				if (pageBlock && e.data.constrainTabKey) {
+					var els = pageBlockEls;
+					var fwd = !e.shiftKey && e.target === els[els.length-1];
+					var back = e.shiftKey && e.target === els[0];
+					if (fwd || back) {
+						setTimeout(function(){focus(back);},10);
+						return false;
+					}
+				}
+			}
+			var opts = e.data;
+			var target = $(e.target);
+			if (target.hasClass('blockOverlay') && opts.onOverlayClick)
+				opts.onOverlayClick(e);
+
+			// allow events within the message content
+			if (target.parents('div.' + opts.blockMsgClass).length > 0)
+				return true;
+
+			// allow events for content that is not being blocked
+			return target.parents().children().filter('div.blockUI').length === 0;
+		}
+
+		function focus(back) {
+			if (!pageBlockEls)
+				return;
+			var e = pageBlockEls[back===true ? pageBlockEls.length-1 : 0];
+			if (e)
+				e.focus();
+		}
+
+		function center(el, x, y) {
+			var p = el.parentNode, s = el.style;
+			var l = ((p.offsetWidth - el.offsetWidth)/2) - sz(p,'borderLeftWidth');
+			var t = ((p.offsetHeight - el.offsetHeight)/2) - sz(p,'borderTopWidth');
+			if (x) s.left = l > 0 ? (l+'px') : '0';
+			if (y) s.top  = t > 0 ? (t+'px') : '0';
+		}
+
+		function sz(el, p) {
+			return parseInt($.css(el,p),10)||0;
+		}
+
+	}
+
+
+	/*global define:true */
+	if (typeof define === 'function' && define.amd && define.amd.jQuery) {
+		define(['jquery'], setup);
+	} else {
+		setup(jQuery);
+	}
+
+})();
+</script>
+<script>
+/*
+ * Chained - jQuery / Zepto chained selects plugin
+ *
+ * Copyright (c) 2010-2014 Mika Tuupola
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Project home:
+ *   http://www.appelsiini.net/projects/chained
+ *
+ * Version: 1.0.0
+ *
+ */
+
+;(function($, window, document, undefined) {
+    "use strict";
+
+    $.fn.chained = function(parent_selector) {
+
+        return this.each(function() {
+
+            /* Save this to child because this changes when scope changes. */
+            var child   = this;
+            var backup = $(child).clone();
+
+            /* Handles maximum two parents now. */
+            $(parent_selector).each(function() {
+                $(this).bind("change", function() {
+                    updateChildren();
+                });
+
+                /* Force IE to see something selected on first page load, */
+                /* unless something is already selected */
+                if (!$("option:selected", this).length) {
+                    $("option", this).first().attr("selected", "selected");
+                }
+
+                /* Force updating the children. */
+                updateChildren();
+            });
+
+            function updateChildren() {
+                var trigger_change = true;
+                var currently_selected_value = $("option:selected", child).val();
+
+                $(child).html(backup.html());
+
+                /* If multiple parents build classname like foo\bar. */
+	      
+                var selected = "";
+                $(parent_selector).each(function() {
+                    var selectedClass = $("option:selected", this).val();
+                    if (selectedClass) {
+                        if (selected.length > 0) {
+                            selected += "\\";
+                        }
+                        selected += selectedClass;
+                    }
+                });
+
+                /* Also check for first parent without subclassing. */
+                /* TODO: This should be dynamic and check for each parent */
+                /*       without subclassing. */
+                var first;
+                if ($.isArray(parent_selector)) {
+                    first = $(parent_selector[0]).first();
+                } else {
+                    first = $(parent_selector).first();
+                }
+                var selected_first = $("option:selected", first).val();
+
+                $("option", child).each(function() {
+                    /* Remove unneeded items but save the default value. */
+                    if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
+                        $(this).prop("selected", true);
+                        trigger_change = false;
+                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selected_first) && $(this).val() !== "") {
+                        $(this).remove();
+                    }
+                });
+
+                /* If we have only the default value disable select. */
+                if (1 === $("option", child).size() && $(child).val() === "") {
+                    $(child).prop("disabled", true);
+                } else {
+                    $(child).prop("disabled", false);
+                }
+                if (trigger_change ) {
+                    $(child).trigger("change");
+                }
+            }
+        });
+    };
+
+    /* Default settings for plugin. */
+    $.fn.chained.defaults = {};
+
+})(window.jQuery || window.Zepto, window, document);
+</script>
+    <style>
+    /*white-space: nowrap;*/
+    /*********/
+    /* *ALL* */
+    /*********/
+    *{   padding: 0px;vertical-align: middle;text-align:center;autocomplete:"off";}
+    
+    /**********/
+    /* _TAGS_ */
+    /**********/
+    table, td, th{
+        padding: 1px;
+        border: 1px solid #FFF;
+        border-collapse:collapse;
+    }
+    body{
+     background-image: url('images/OBscene.jpg');
+        background-repeat: no-repeat;/*otherwise image repeat*/
+        background-position: center;/**/
+        background-attachment: fixed;/**/
+        /*background-size: 100%;/**/
+        background-size: cover;
+        /*opacity: 0.4;filter:alpha(opacity=40);/**/
+        /*margin: 0px 10px 1%;/**/
+        /*min-width:800px;/**/
+        /*background-color: black;/**/
+     }
+     button,
+    select {
+      text-transform: none;
+    }
+    /*************/
+    /* .CLASSES. */
+    /*************/
+    .leftMargin{ margin: 0px 5px 0px 0px;}
+    .horzPadding{ padding: 0px 2px;}
+    .padding{
+        padding: 2px;
+    }
+    .hide{
+        /*visibility: hidden;/**/
+        display: none;
+    }
+    .floatLeft{float: left;}
+    .floatRight{float: right;}
+    .stat{
+        width: 33px;
+        min-width: 33px;
+        height: 28px;
+    }
+    .value{/*inside stat?*/
+        
+        width: 25px;
+        text-align:center;
+    } 
+    .tall{
+        /*
+        margin: auto;
+        height: 28px;/**/
+        padding: 6px 0px;
+    }
+    .thintable{
+        float: right;/**/
+        margin: -1px 0px 0px 0px;
+    }
+    .slot{
+        min-width: 48px;/**/
+    }
+    .swappable, .Name-cell{
+	cursor: pointer;
+	background-color: #DDF;
+	
+    }
+    .swappable:active, .Name-cell:active{
+	    position:relative;
+	    top:1px;
+    }
+    .swappable:hover, .Name-cell:hover{
+	    color: blue;
+    }
+    .noBorder{	border: 0px;/**/}
+    .yesBorder{	border: 1px solid #FFF;	}
+    .inline{ display: inline-block;  }
+    .sideways{ -webkit-transform: rotate(-45deg);}
+    .short{    width: 60px;   }
+    .noMarg{ margin: -3px 0px 0px 0px; }
+    .long{   width: 80px;    }
+    .wide{   width: 140px;    }
+    .wider{ width: 125px; }
+    .rightAlign{ text-align: right; }
+    .leftAlign{ text-align: left; }
+    .gray{ color: gray;}
+    /*Non-Flexable Table Rows (so rest flex)*/
+    .Attack-Stats-cell, .Attack-Power-cell{ max-width:53px; min-width: 48px;}
+    .Physical-Resist-cell{ max-width:47px; min-width: 42px;}
+    .Magic-Resist-cell{ max-width:50px; min-width: 45px;}
+    .Earliest-Map-cell{ max-width:35px; min-width: 35px;}
+    .Align-cell{ max-width:42px; min-width: 38px;}
+    .Char-Level-cell{ max-width:29px; min-width: 24px;}
+    .fixed {
+        position:fixed;
+        top:0;
+    }
+    /**********/
+    /* #ID's# */
+    /**********/
+    /*#strBox,#intBox,#vitBox,#dexBox,#agiBox,#hpBox,#menBox*/
+    #uLeader{
+        /*color: #dadada;*/
+        
+    }
+    #b{ font-weight: bold;}
+    div#t{
+        float: left;
+    }
+   /* #marginUp{margin: -1px 0px 0px 0px;}/**/
+   
+    #banner {
+        float: none;
+        margin: auto;/*CENTER*/
+       /*content: url('OB64blue2.png');/**/
+       /*max-width: 1000px;/**/
+       /*height: 200px;/**/
+       /*height: auto;/**/
+       width: 500px;/**/
+       /*max-height: 20%;/**/
+    }
+    img.resize{
+    width:540px; /* you can use % */
+    height: auto;
+    }
+    #page{
+        /*background-color: rgba(255, 255, 255, 0.5);/**/
+        background-color: #CCF;/**/
+        max-width: 1000px;/**/
+        margin: auto;/*CENTER*/
+        overflow: auto;
+    }
+     #body{
+        /*min-height:500px;/**/
+     }
+     #bigTable{
+        min-width: 1000px;
+        max-width: 1000px;
+        width: 1000px;
+     }
+     .froze{
+        display: none;
+     }
+    /*
+     th .froze{
+        position: absolute;
+        background: transparent;
+        color: #fff;
+        top: 0;
+        line-height: normal;
+        border-left: 1px solid #800;
+        width: 0%;
+      }
+      .container {
+        overflow-y: auto;
+        height: 500px;
+      }
+      
+      
+     html, body{
+        margin:0;
+        padding:0;
+        height:100%;
+      }
+      section {
+        position: relative;
+        border: 1px solid #000;
+        padding-top: 37px;
+        background: #500;
+      }
+      section.positioned {
+        position: absolute;
+        top:100px;
+        left:100px;
+        width:800px;
+        box-shadow: 0 0 15px #333;
+      }
+      table {
+        border-spacing: 0;
+        width:100%;
+      }
+      td + td {
+        border-left:1px solid #eee;
+      }
+      td, th {
+        border-bottom:1px solid #eee;
+        background: #ddd;
+        color: #000;
+      }
+      th {
+        height: 0;
+        line-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: transparent;
+        border: none;
+      }
+      th:first-child div{
+        border: none;
+      }/**/
+    </style>
+</head>
+<body>
+    <form autocomplete="off">
+    <img id="banner" src="images/OB64blue2.png" alt="">
+    <div id="page" class="padding">
+    <!--div id="banner"></div><!-- div id="banner"-->
+    <div id="body">
+        
+    <div class="t">
+    <table width="100%" class="noBorder">
+    <thead>
+    <tr >
+    <td width="20%" class="tall noBorder" >
+    Class Filter:
+    <select id="typeSel">
+        <option value="">List All</option>
+        <option value="m">Male Only</option>
+        <option value="f">Female Only</option>
+        <option value="s">Special Only</option>
+        <option value="d">Dragon Only</option>
+        <option value="o">Others</option>
+        <!--option value="pi">Petrify Immune</option-->
+    </select>
+    </td>
+    <td width="24%" class="noBorder">
+    <label id="b">Starting Class:</label> 
+    <select id="charSel" name="character">
+        <option value="" class="">--Select--</option>
+        <!-- Most popular Searched -->
+        <option value="fighter" class=" m">Fighter</option>
+        <option value="amazon" class=" f">Amazon</option>
+        <option value="black" class=" m">Black Knight</option>
+        <option value="angel" class=" f">Angel Knight</option>
+        <option value="magnus" class=" s">Magnus</option>
+        <!-- Special Chars That come with units -->
+        <option value="dio" class=" s">Diomedes</option>
+        <option value="leia" class=" s">Leia</option>
+        <option value="ank" class=" s">Ankiseth</option>
+        <option value="euro" class=" s f">Europea</option>
+        <!-- Special chars w/ non-female/male class -->
+        <option value="vad" class=" s">Vad</option>
+        <option value="biske" class=" s">Biske</option>
+        <option value="shee" class=" s">Sheen</option>
+        <!--Starting Classes-->
+        <option value="knight" class=" m">Knight</option>
+        <option value="sorc" class=" f">Sorceress</option>
+        <option value="cleric" class=" f">Cleric</option>
+        <option value="beast_t" class=" m">Beast Tamer</option>
+        <option value="archer" class=" f">Archer</option>
+        <option value="witch" class=" f">Witch</option>
+        <option value="fencer" class=" m">Fencer</option>
+        <option value="doll_m" class=" m">Doll Master</option>
+        <option value="berz"  class=" m">Berserker</option>
+        <option value="valk"  class=" f">Valkyrie</option>
+        <option value="dragon_t" class=" f">Dragon Tamer</option>
+        <option value="phalanx" class=" m">Phalanx</option>
+        <option value="wiz" class=" m">Wizard</option>
+        <!-- Higher Characters-->
+        <option value="freya" class=" f">Freya</option>
+        <option value="pala" class=" m">Paladin</option>
+        <option value="diana" class=" f">Diana</option>
+        <option value="cata" class=" m">Cataphract</option>
+        <!-- Zenobians -->
+        <option value="sera" class=" s">Seradin</option>
+        <option value="dest" class=" s">Destin</option>
+        <option value="debo" class=" s">Debonair</option>
+        <option value="aisha" class=" s f">Aisha</option>
+        <option value="gilb" class=" s m">Gilbert</option>
+        <!-- Special Male Char -->
+        <option value="troi" class=" s m">Troi</option>
+        <option value="ansa" class=" s m">Ansabel</option>
+        <option value="carth" class=" s m">Carthe</option>
+        <option value="paul" class=" s m">Paul</option>
+        <!-- Special Female Char -->
+        <option value="ketr" class=" s f">Ketreda</option> 
+        <option value="lied" class=" s f">Liedel</option>
+        <option value="mere" class=" s f">Meredia</option>
+        <option value="deneb" class=" s f">Deneb</option>
+
+        
+        <option value="seraph" class=" f">Seraph</option>
+        <!--Dragon-->
+        <option value="yDragon" class=" d">Young Dragon</option>
+        <option value="thunderD" class=" d">Thunder Dragon</option>
+        <option value="earthD" class=" d">Earth Dragon</option>
+        <option value="blueD" class=" d">Blue Dragon</option>
+        <option value="redD" class=" d">Red Dragon</option>
+        <option value="blackD" class=" d">Black Dragon</option>
+        <option value="platD" class=" d">Platinum Dragon</option>
+        <option value="hydra" class=" d">Hydra</option>
+        <option value="azhi" class=" d">Azhi Dahaka</option>
+        <option value="quet" class=" d">Quetzelcoatl</option>
+        <option value="flar" class=" d">Flarebrass</option>
+        <option value="baha" class=" d">Bahamut</option>
+        <option value="tiam" class=" d">Tiamat</option>
+        <!-- Other Large-->
+        <option value="sphinx" class=" o">Sphinx</option>
+        <option value="hound" class=" o">Hell Hound</option>
+        <option value="cerb" class=" o">Cerberus</option>
+        <option value="golem" class=" o pi">Golem</option>
+        <option value="sgolem" class=" o pi">Stone Golem</option>
+        <option value="bgolem" class=" o pi">Baldr Golem</option>
+        <option value="ogre" class=" o">Ogre</option>
+        <option value="wyrm" class=" o">Wyrm</option>
+        <option value="grif" class=" o">Griffon</option>
+        <option value="wyv" class=" o">Wyvern</option>
+        <option value="opi" class=" o">Opinincus</option>
+        <option value="cock" class=" o pi">Cockatris</option>
+
+        <!-- Other Small-->
+        <option value="hawk" class=" o">Hawkman</option>
+        <option value="vult" class=" o">Vultan</option>
+        <option value="rave" class=" o">Raven</option>
+        <option value="skele" class=" o pi">Skeleton</option>
+        <option value="ghost" class=" o pi">Ghost</option>
+        <option value="gob" class=" o">Goblin</option>
+        <option value="gor" class=" o">Gorgon</option>
+        <option value="grem" class=" o">Gremlin</option>
+        <option value="pump" class=" o">Pumpkinhead</option>
+        <option value="satu" class=" o">Saturos</option>
+
+        <!-- Cheat -->
+        <option value="yum" class=" s">Yumil</option>
+        
+    </select>
+    </td>
+    <td width="23%" class="noBorder">
+    Obtained by:
+    <select id="obtainSel" name="obtained">
+        <option value="start" class="magnus fighter amazon golem knight sorc cleric beast_t archer witch fencer doll_m berz valk dragon_t phalanx wiz golem wyrm grif hound">Starting Character</option>
+        <option value="sold" class="fighter amazon">Soldier Promotion</option>
+        <option value="neut" class="grim pump gob gor skele ghost hawk vult rave sphinx cock cerb hound grif opi wyv wyrm ogre sgolem bgolem yDragon golem thunderD earthD blueD redD blackD platD hydra azhi flar baha tiam">Neutral Encounter</option>
+        <option value="love" class="satu bgolem black witch angel seraph hydra azhi quet flar baha tiam">Love & Peace</option>
+        <option value="dio" class="dio amazon fighter">Dio's Unit</option>
+        <option value="leia" class="leia amazon valk">Leia's Unit</option>
+        <option value="ank" class="ank diana cata">Ankiseth's Unit</option>
+        <option value="euro" class="euro freya pala">Europa's Unit</option>
+        <option value="zeno" class="dest debo gilb aisha sera">Zenobians</option>
+        <option value="spec" class="troi ketr ansa biske lied shee mere carth vad">Special Character</option>
+        <option value="cheat" class="yum deneb paul">Cheat</option>
+    </select>
+    </div><!--div id='t'-->
+    </td>
+    <td width="13%" class="noBorder">
+    Initial Lvl 
+    <select id="levelSel" name="startLevel">
+        <option value="2" class="cheat wyrm\neut yum\cheat amazon\sold fighter\sold yDragon\neut golem\neut">2</option>
+        <option value="3" class="hawk\neut hound\neut grif\neut valk\leia amazon\leia amazon\dio fighter\dio amazon\sold fighter\sold amazon\start fighter\start golem\start knight\start sorc\start cleric\start beast_t\start archer\start witch\start fencer\start doll_m\start berz\start valk\start dragon_t\start phalanx\start wiz\start golem\start wyrm\start grif\start hound\start">3</option>
+        <option value="4" class="amazon\sold fighter\sold magnus\start dio\dio leia\leia">4</option>
+        <option value="5" class="hawk\neut grim\neut hound\neut grif\neut wyrm\neut golem\neut yDragon\neut amazon\sold fighter\sold">5</option>
+        <option value="6" class="hawk\neut grim\neut wyrm\neut ghost\neut skele\neut amazon\sold fighter\sold troi\spec">6</option>
+        <option value="7" class="grif\neut golem\neut yDragon\neut blueD\neut amazon\sold fighter\sold">7</option>
+        <option value="8" class="hawk\neut hound\neut ghost\neut skele\neut ketr\spec ansa\spec yDragon\neut thunderD\neut amazon\sold fighter\sold">8</option>
+        <option value="9" class="hawk\neut hound\neut grif\neut earthD\neut platD\neut amazon\sold fighter\sold">9</option>
+        <option value="10" class="amazon\sold fighter\sold">10</option>
+        <option value="11" class="pump\neut grim\neut hound\neut wyrm\neut blackD\neut platD\neut amazon\sold fighter\sold">11</option>
+        <option value="12" class="cock\neut ghost\neut skele\neut sgolem\neut thunderD\neut redD\neut blueD\neut amazon\sold fighter\sold">12</option>
+        <option value="13" class="grim\neut grif\neut amazon\sold fighter\sold">13</option>
+        <option value="14" class="sgolem\neut earthD\neut redD\neut amazon\sold fighter\sold">14</option>
+        <option value="15" class="cock\neut gob\neut thunderD\neut earthD\neut amazon\sold fighter\sold">15</option>
+        <option value="16" class="flar\love baha\love bgolem\love vult\neut rave\neut cerb\neut ghost\neut skele\neut thunderD\neut blackD\neut blueD\neut amazon\sold fighter\sold black\love witch\love">16</option>
+        <option value="17" class="quet\love baha\love grim\neut earthD\neut redD\neut amazon\sold fighter\sold black\love">17</option>
+        <option value="18" class="ghost\neut skele\neut blackD\neut platD\neut amazon\sold fighter\sold">18</option>
+        <option value="19" class="hydra\love azhi\love quet\love flar\love tiam\love baha\love earthD\neut platD\neut amazon\sold fighter\sold black\love witch\love">19</option>
+        <option value="20" class="opi\neut thunderD\neut platD\neut amazon\sold fighter\sold">20</option>
+        <option value="21" class="pump\neut gob\neut bgolem\neut sgolem\neut redD\neut amazon\sold fighter\sold black\love">21</option>
+        <option value="22" class="flar\love cock\neut opi\neut wyv\neut earthD\neut amazon\sold fighter\sold black\love angel\love">22</option>
+        <option value="23" class="cerb\neut wyv\neut thunderD\neut blackD\neut blueD\neut amazon\sold fighter\sold witch\love">23</option>
+        <option value="24" class="cock\neut opi\neut bgolem\neut amazon\sold fighter\sold black\love witch\love">24</option>
+        <option value="25" class="amazon\sold fighter\sold witch\love">25</option>
+        <option value="26" class="gob\neut">26</option>
+        <option value="27" class="cerb\neut">27</option>
+        <option value="28" class="pump\neut gor\neut gob\neut">28</option>
+        <option value="29" class="sphinx\neut bgolem\neut">29</option>
+        <option value="30" class="opi\neut ogre\neut black\love">30</option>
+        <option value="31" class="sphinx\neut wyv\neut gor\neut gob\neut black\love">31</option>
+        <option value="32" class="tiam\neut black\love">32</option>
+        <option value="33" class="abc">33</option>
+        <option value="34" class="sphinx\neut cock\neut opi\neut wyv\neut gor\neut hydra\neut azhi\neut angel\love">34</option>
+        <option value="35" class="abc">35</option>
+        <option value="36" class="bgolem\neut flar\neut baha\neut black\love">36</option>
+        <option value="37" class="seraph\love">37</option>
+    </select>
+    </td>
+    <td width="20%" class="noBorder">
+        On Map:
+         <select id="mapSel" >
+	  <option value="1"> -- </option>
+	  <option value="2">Tenne Plains</option>
+	  <option value="3">Volmus Mine I</option>
+	  <option value="4">Crenel Canyon I</option>
+         </select>
+    </td>
+    </tr>
+    </thead>
+    </table>
+    
+    <div style="clear:both"></div>
+    
+    <!--displayed only when 'Obtained by' is set to "start", otherwise row is not display == takes up no space -->
+    <div id="leadBonus" class="hide">
+        <span class="tall gray">
+         Dragons +__% Att/Def when Leader:
+         <select id="leadSel" >
+	  <option value="1"> -- </option>
+	  <option value="2">Dragon Master</option>
+	  <option value="3">Enchanter</option>
+	  <option value="4">Beast Master</option>
+         </select>
+        </span>
+        
+    <table class="floatRight noBorder">
+    <thead>
+      <tr class="noBorder">
+        <td class="horzPadding noBorder">
+	  <label id="uLeader">'Starting Character' Stat Bonus:</label>
+	  <select id="g2LeadSel" name="g2Leader">
+	      <option value="war" class="start">Warrior: Knight</option>
+	      <option value="mag" class="start">Magic: Sorcerer</option>
+	      <option value="heal" class="start">Healer: Cleric</option>
+	      <option value="beast" class="start">Trainer: Beast Tamer</option>
+	  </select>:
+        </td>
+        <th class="stat"><input class="value STR strBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value VIT vitBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value INT intBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value MEN menBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value AGI agiBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value DEX dexBox" type="text" disabled="disabled" value="0"></th>
+        <th class="stat"><input class="value HP hpBox" type="text" disabled="disabled" value="0"></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    </div><!-- div id="leadBonus"-->
+    
+    <div class ="">
+    <table class="floatRight">
+    <thead>
+      <tr>
+	  <td ><label class="horzPadding">Luck:</label> <input id="LUCK" class="value LUCK leftMargin" type="text" value=""> </td>
+	  <td class="horzPadding">Gear Enhanced Stats<input id="cbox" type="checkbox"  checked="checked"></td>
+	  <td ><label class="horzPadding">Adjust Stats:</label> </td>
+	  <th class="stat"><input id="STR" class="value STR" type="text" value="0"></th>
+	  <th class="stat"><input id="VIT" class="value VIT" type="text" value="0"></th>
+	  <th class="stat"><input id="INT" class="value INT" type="text" value="0"></th>
+	  <th class="stat"><input id="MEN" class="value MEN" type="text" value="0"></th>
+	  <th class="stat"><input id="AGI" class="value AGI" type="text" value="0"></th>
+	  <th class="stat"><input id="DEX" class="value DEX" type="text" value="0"></th>
+	  <th class="stat"><input id="HP"  class="value HP" type="text" value="0"></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    
+    </div>
+    
+    <div class="floatLeft">
+    
+        <div class="wide noMarg inline gray">
+        <input class="long" type="range" min="0" max="5" value="1" onchange="compressList(this.value)" oninput="compressList(this.value)">
+        Compress Rows:<span id="comptext"></span>
+        </div>
+        
+        <div class="wide noMarg inline gray">
+        <input class="short" type="range" min="0" max="2" value="2" onchange="flipListener(this.value)" oninput="flipListener(this.value)">
+        Position:<span id="fliptext">Front</span>
+        </div>
+        
+        <div class="wider noMarg inline">
+        <input id="resRange" class="long" type="range" min="0" max="6" value="0" onchange="elementList(this.value)" oninput="elementList(this.value)">
+        Resist:<span id="resEle">Strike</span>
+        </div>
+        
+    </div><!-- div:floatLeft -->
+
+    <script>
+        function flipListener(val){
+	  if (val == 0) { 	fliptext.innerHTML = "Back";}
+	  else if (val == 1) {	fliptext.innerHTML = "Middle";}
+	  else {		fliptext.innerHTML = "Front";}
+        }
+        function elementList(val){
+	  if (val == 0) { 	resEle.innerHTML = "Strike";}
+	  else if (val == 1) {	resEle.innerHTML = "Earth";}
+	  else if (val == 2) {	resEle.innerHTML = "Wind";}
+	  else if (val == 3) {	resEle.innerHTML = "Water";}
+	  else if (val == 4) {	resEle.innerHTML = "Fire";}
+	  else if (val == 5) {	resEle.innerHTML = "Virtue";}
+	  else {		resEle.innerHTML = "Bane";}
+        }
+        function compressList(val){
+	  //NOT IMPLEMENTED YET
+	  //NOT IMPLEMENTED YET
+	  //NOT IMPLEMENTED YET
+        }
+    </script>
+    
+    <div style="clear:both"></div>
+    
+    <section class="">
+    <div id="divTable" class="thintable container">
+        <table id="bigTable"class="floatRight">
+        <thead>
+	<tr class="header">
+	  <th class="Char-Level-cell">Lvl<div class="froze">Lvl</div></th>
+	  <th class="Character-Class-cell">Class<div class="froze">Class</div></th>
+	  <th class="Align-cell">Align<div class="froze">Align</div></th>
+	  <th class="Earliest-Map-cell">Map<div class="froze">Map</div></th>
+	  <th class="Attack-Stats-cell">Attack Stats<div class="froze">Attack Stats</div></th>
+	  <th class="Attack-Power-cell">Attack Power<div class="froze">Attack Power</div></th>
+	  <th class="Physical-Resist-cell">Phys. Resist<div class="froze">Phys. Resist</div></th>
+	  <th class="Magic-Resist-cell">Magic Resist<div class="froze">Magic Resist</div></th>
+	  <th class="slot">Slot #1<div class="froze">Slot #1</div></th>
+	  <th class="slot">Slot #2<div class="froze">Slot #2</div></th>
+	  <th class="slot">Slot #3<div class="froze">Slot #3</div></th>
+	  <th class="slot">Slot #4<div class="froze">Slot #4</div></th>
+	  <th class="stat">Str<div class="froze">Str</div></th>
+	  <th class="stat">Vit<div class="froze">Vit</div></th>
+	  <th class="stat">Int<div class="froze">Int</div></th>
+	  <th class="stat">Men<div class="froze">Men</div></th>
+	  <th class="stat">Agi<div class="froze">Agi</div></th>
+	  <th class="stat">Dex<div class="froze">Dex</div></th>
+	  <th class="stat">HP<div class="froze">HP</div></th>
+	  <!--th class="Char-Level-cell">Lvl<span class="froze">Lvl</span></th>
+	  <th class="Character-Class-cell">Class<span class="froze">Class</span></th>
+	  <th class="Align-cell">Align<span class="froze">Align</span></th>
+	  <th class="Earliest-Map-cell">Map<span class="froze">Map</span></th>
+	  <th class="Attack-Stats-cell">Attack Stats<span class="froze">Attack Stats</span></th>
+	  <th class="Attack-Power-cell">Attack Power<span class="froze">Attack Power</span></th>
+	  <th class="Physical-Resist-cell">Phys. Resist<span class="froze">Phys. Resist</span></th>
+	  <th class="Magic-Resist-cell">Magic Resist<span class="froze">Magic Resist</span></th>
+	  <th class="slot">Slot #1<span class="froze">Slot #</span></th>
+	  <th class="slot">Slot #2<span class="froze">Slot #</span></th>
+	  <th class="slot">Slot #3<span class="froze">Slot #</span></th>
+	  <th class="slot">Slot #4<span class="froze">Slot #</span></th>
+	  <th class="stat">Str<span class="froze">Lvl</span></th>
+	  <th class="stat">Vit<span class="froze">Lvl</span></th>
+	  <th class="stat">Int<span class="froze">Lvl</span></th>
+	  <th class="stat">Men<span class="froze">Lvl</span></th>
+	  <th class="stat">Agi<span class="froze">Lvl</span></th>
+	  <th class="stat">Dex<span class="froze">Lvl</span></th>
+	  <th class="stat">HP<span class="froze">HP</span></th-->
+	</tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+    </div><!-- div id="divTable"-->
+    </section>
+    
+    <script>
+        
+        //top menu stationary:
+        /*var num = 53; //number of pixels before modifying styles
+        $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > num) {
+                $('#frozen').addClass('fixed');
+            } else {
+                $('#frozen').removeClass('fixed');
+            }
+        });*/
+    
+        var statNames = ['STR','INT','DEX','VIT','MEN','AGI','HP'];
+        var colhead = ['lvl','Name','Align','Map','Attack Stats','Attack Power','Phys. Resist','Magic Resist','UL','UR','LL','LR','STR','VIT','INT','MEN','AGI','DEX','HP'];
+        var attributes = Object.getOwnPropertyNames( data_char['fighter']);//this table changes a lot so don't want to define it
+        var weps = Object.getOwnPropertyNames( data_gear); //list of gear items
+        var wepProps = Object.getOwnPropertyNames( data_gear['Short Sword'] );//["Type", "STR", "INT", "AGI", "DEX", "VIT", "MEN", "Strike", "Wind", "Fire", "Earth", "Water", "Virtue", "Bane", "Levelup", "Static"]        
+ 
+        //var statLvl = ['lvl_STR','lvl_INT','lvl_DEX','lvl_VIT','lvl_MEN','lvl_AGI','lvl_HP'];
+        var ele = {};
+        ele.sb = {};
+        for(var i =0; i<statNames.length; i++){
+	  ele.sb[statNames[i]] = document.getElementById( statNames[i] );
+          /*ele.sb.STR = document.getElementById("STR");
+	  ele.sb.INT = document.getElementById("INT");
+	  ele.sb.DEX = document.getElementById("DEX");
+	  ele.sb.VIT = document.getElementById("VIT");
+	  ele.sb.MEN = document.getElementById("MEN");
+	  ele.sb.HP = document.getElementById("HP");
+	  ele.sb.AGI = document.getElementById("AGI");*/
+        }
+        
+        
+        var x = "#d3cfce";//"#BEACAA";//"#dadada";
+        var black = "#000000";
+        var white = "#FFFFFF";
+        
+        
+        var typeSel = $("#typeSel");
+        var charSel = $("#charSel");
+        var obtainSel = $("#obtainSel");
+        var g2LeadSel = $('#g2LeadSel');
+        var levelSel = $("#levelSel");
+        var mapSel = $("#mapSel");
+        //*Magical* Select Dependencies
+        charSel.chained(typeSel);
+        obtainSel.chained(charSel);
+        g2LeadSel.chained(obtainSel);
+        levelSel.chained("#obtainSel, #charSel");
+
+        //Select initial styling
+        $("#LUCK").prop('disabled', 'disabled');
+        $("#LUCK").css("background-color",x);
+        //document.getElementById("leadSel").disabled = true;//
+        $("#leadSel").prop('disabled', 'disabled');
+        obtainSel.css("background-color",x);
+        levelSel.css("background-color",x);
+        mapSel.css("background-color", x);
+        g2LeadSel.css("background-color", x);
+        $(".strBox").css("background-color", x);
+        $(".vitBox").css("background-color", x);
+        $(".intBox").css("background-color", x);
+        $(".menBox").css("background-color", x);
+        $(".agiBox").css("background-color", x);
+        $(".dexBox").css("background-color", x);
+        $(".hpBox").css("background-color", x);
+        mapSel.css('pointer-events','none');//Make non-editable without graying out.
+        mapSel.val('L2');
+        
+        
+        
+        
+        /**********************/
+        /* Helper Function(s) */
+        /**********************/
+        var possible = ["STR", "INT", "AGI", "DEX", "VIT", "MEN","HP", "Strike", "Wind", "Fire", "Earth", "Water", "Virtue","Bane"];
+        var position = ["UL","UR","LL","LR"];
+        function getGearPermBonus( lvl, stat){
+	  if ( lvl<0 || lvl>99 || statNames.indexOf(stat) == -1 ){
+	      console.log("getGearPermBonus parameter error: possible.indexOf("+stat+"):"+statNames.indexOf(stat)+" lvl:"+lvl );
+	      return 0;
+	  } else if ( lvl == 0) {
+	      return 0;
+	  }
+	  if (stat == "STR" || stat == "HP") {
+	      stat = "HP/STR";
+	  }
+	  var sum = 0;
+	  for(i=0; i<position.length; i++){
+	      var atName = position[i];
+	      var atVal = m[lvl][atName];
+	      if (atVal == "-") {continue;}//skip "-" slots
+	      if (data_gear[atVal]['Levelup'] == stat || data_gear[atVal]['Levelup'] == 'All') {//'All' == 'Firecrest'
+		sum++;
+	      }
+	  }
+	  return sum;
+        }
+        //Get all gearBonuses for a specific level/stat
+        function getGearBonuses( lvl, stat){
+	  //error check
+	  
+	  if ( lvl<1 || lvl>99 || possible.indexOf(stat) == -1 ){
+	      console.log("getGearBonuses parameter error: possible.indexOf("+stat+"):"+possible.indexOf(stat) );
+	      return 0;
+	  } else if (stat == "HP") {
+	      return 0;//no gear has HP on it.
+	  }
+	  var sum = 0;
+	  for(i=0; i<position.length; i++){
+	      var atName = position[i];
+	      var atVal = m[lvl][atName];
+	      if (atVal == "-") {continue;}//skip "-" slots
+	      sum += data_gear[atVal][stat];
+	  }
+	  return sum;
+        }
+        function show_table(){
+	  for(var i=1; i<100; i++){
+	     if (i<51 || i==99) {
+	         v[i].classList.remove("hide");
+	         //v[i].className += " hide";
+	     }
+	 }
+	 $('#bigTable tr:visible').filter(':odd').css({'background-color': '#BCF'});
+	 $('#bigTable tr:visible').filter(':even').css({'background-color': ''});
+        }
+        function clear_table() {
+	  for(var i=1; i<100; i++){
+	      v[i].classList.add("hide");
+	  }
+        }
+        
+        function selectorUpdate(){
+	  //============================
+	  //Update Coloring Hide/Show
+	  //============================
+	  //change background color of selects, depending if more than 1 value possible.
+	  if ( $('#obtainSel option').length <2) { obtainSel.css("background-color",x); }
+	  else{ obtainSel.css("background-color","");}
+	  if ( $('#levelSel option').length <2) { levelSel.css("background-color",x); }
+	  else{ levelSel.css("background-color","");}
+	  if ( $('#g2LeadSel option').length <2) { g2LeadSel.css("background-color",x); }
+	  else{ g2LeadSel.css("background-color","");}
+	  if ( true/*$('#mapSel option').length <2*/) { mapSel.css("background-color",x); }
+	  else{ mapSel.css("background-color","");}
+	  //Step 3:gray out/un-gray G1 Leader
+	  if ( $('#obtainSel').val() != "start" ) {
+	      //$("#uLeader").css("color", "#dadada");
+	      //$("#g2LeadSel").prop('disabled', 'disabled');
+	      //$("#leadBonus").css("display", "none");
+	      document.getElementById("leadBonus").classList.add("hide");
+	  }else{
+	      //$("#uLeader").css("color", "#000000");
+	      //$("#g2LeadSel").prop('disabled', false);
+	      //$("#leadBonus").css("display", "visible");
+	      document.getElementById("leadBonus").classList.remove("hide");
+	  }
+        }
+        
+        /**************************/
+        /*  two-way data-binding  */
+        /**************************/
+        function bindModelValue(obj, property, domElem) {
+	  Object.defineProperty(obj, property, {
+	    get: function() { return domElem.value; }, //value
+	    set: function(newValue) { domElem.value = newValue;},
+	    configurable: true
+	  });
+        }
+        function bindModelInnerHTML(obj, property, domElem) {
+	  Object.defineProperty(obj, property, {
+	    get: function() { return domElem.innerHTML; }, //innerHTML
+	    set: function(newValue) { domElem.innerHTML = newValue; },
+	    configurable: true
+	  });
+        }
+        function bindModel(obj, property, domElem, eleProp) {
+	  Object.defineProperty(obj, property, {
+	    get: function() { return domElem[eleProp]; },  //*any*
+	    set: function(newValue) { domElem[eleProp] = newValue; },
+	    configurable: true
+	  });
+        }
+    
+        /*************/
+        /*   Model m */
+        /*************/
+        var m = [];//lvls 1 - 99 (Has 0'th Element, but only for stat gains)
+        clear_init_m();
+        
+        function clear_init_m(){
+	  for(var i=0; i<100; i++){
+	      m[i] = {};
+	      m[i].lvl = i;
+	  }
+        }
+	      /*
+	      m .HP .STR .VIT .INT .MEN .AGI .DEX (data_lvl1.col)  				//Starting Stats
+	      m .Base .BaseLvl .Base2 .Base2_Lvl .Start_Align .Luck (data_base.col)		//Starting Development
+	      
+	      m[0-#] .STR .INT .DEX .VIT .MEN .AGI .HP (stat_lvl)		//Gains per Lvl
+	      m[#] .Name .UL .UR .LL .LR .Strike (part of data_char)				//Name + Equipment + Resistances
+	      */
+	      
+        /************/
+        /*   View v */
+        /************/
+        var v = [];// rows 1 - 99 (No 0'th element)
+        for(var i=1; i<100; i++){
+	  v[i] = {};
+	  v[i] = document.createElement('tr');
+	  v[i].id=i;
+	  for(var j=0; j<colhead.length; j++){
+	      var tableData = document.createElement('td');
+	      var node = v[i].appendChild(tableData);
+	      bindModelInnerHTML(v[i],j,node);//v[i][j] -bind- <td>.innerHTML
+	  }
+	  $('#bigTable > tbody:last').append( v[i] );
+	  //if (i>50 && i!=99) {
+	      v[i].className += " hide";
+	  //}
+        }
+        bindModelValue(v,'Luck',document.getElementById("LUCK") );		// v.Luck	     -bind- #LUCK.value
+        bindModelValue(v,'initClass',document.getElementById("charSel") );	// v.initClass -bind- #charSel.value
+        bindModelValue(v,'initLvl',document.getElementById("levelSel") );	// v.initLvl   -bind- #levelSel.value
+        bindModelValue(v,'g2Lead',document.getElementById("g2LeadSel") );	// v.g2Lead    -bind- #g2Lead.value
+        bindModel(v,"checkbox", document.getElementById("cbox"), "checked");	// v.checkbox  -bind- #cbox.checked
+        bindModelInnerHTML(v,"resist", document.getElementById("resEle"));	// v.resist    -bind- #resEle.innerHTML
+
+        //v[3].className += " hide";	//Hide a row
+        //v[3].className = "";	//Show a row
+        
+        function clear_init_v(){
+	  //don't want to delete v, just set everything to: ""
+	  for(var i=1; i<v.length;i++){
+	      for(var j=0; j<v[i].length; j++){
+		v[i][j] = "";
+	      }
+	  }
+	  v.Luck = "";
+        }
+        
+        /***********/
+        /* Paint() */
+        /***********/
+        
+        var firstRun = true;
+        //Variables to keep track of "did X change since last call"
+        var last = {};
+        update_last();
+        function update_last(){
+	  last.g2Lead= v.g2Lead;//current g1 leader: starting stat influences
+	  last.initClass = v.initClass;
+	  last.initLvl = v.initLvl;
+	  last.checkbox = v.checkbox;
+        }
+        /*last.sb = {}; //sb = stat bonuses
+        for(var i =0; i<statNames.length; i++){
+	  last.sb[ statNames[i]] = ele.sb[statNames[i]];//0
+	  //last.sb.STR = last.sb.INT = last.sb.DEX = last.sb.VIT = last.sb.MEN = last.sb.AGI = last.sb.HP = 0;
+        }*/
+        
+        $("#g2LeadSel").on('change', update );
+        $("#obtainSel").on('change', selectorUpdate );//might not need since updates other values?
+        $("#charSel").on('change', update );
+        $("#cbox").on('change', update);
+        $("#levelSel").on('change', update );
+        $("#resRange").on('input', update);
+        
+        //HEART AND SOUL OF APP//
+        function update(){
+        
+	  console.log( "Paint:"+ this.id );//TEST_OUTPUT
+	  if (v.initClass == "") {
+	      clear_init_m();
+	      clear_init_v();
+	      clear_table();
+	  }else{
+	      show_table();
+	      selectorUpdate();
+		//Step 5: Starting Character Bonus Stats
+	      if ( last.g2Lead !== v.g2Lead ) {
+		console.log("change in g1 Leader "+g2LeadSel.val() );//TEST_OUTPUT
+		g2lead_change();
+	      }
+	      //Update ONLY if Starting Class or initial Level has changed:
+	      if (last.initClass != v.initClass || last.initLvl != v.initLvl) {
+		update_model(); 
+	      }
+	      recalcStats();
+	  }
+	  update_last();
+        }//End of update() // PAINT
+        
+        
+        
+        //Make it so 'Stat Cells' have the following properties:
+        //1.select all when selected,
+        //2.filter input to int's -99 to 99,
+        //3.only call update() if value changed.
+        {
+	  var lastval;
+	  $("#HP").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#AGI").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#INT").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#STR").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#DEX").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#MEN").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#VIT").on('focus', function(){ lastval = this.value; $(this).select(); } );
+	  $("#HP" ).on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#AGI").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#INT").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#VIT").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#DEX").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#MEN").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+	  $("#STR").on('blur', function(){ this.value=filter(this.value); if(lastval!=this.value){ update.apply(this); } } );
+        }
+        function filter( val ){
+	  if (typeof val === "string") {
+	      val = parseInt(val);
+	  }
+	  if ( isNaN(val) || val == null){
+	      return 0;
+	  }else if (val > 99) {
+	      return 99;
+	  }else if (val < -99) {
+	      return -99;
+	  }else{
+	      return val;
+	  }
+        }
+        
+        /*********************/
+        /* Massive Functions */
+        /*********************/
+        
+        function g2lead_change(){
+	  switch( g2LeadSel.val() ){
+	      case "war"://Warrior = 'Knight': +7 Str, +6 Vit, +2 Int, +4 Men, +2 Agi, +4 Dex
+		$(".strBox").val( 7 );
+		$(".vitBox").val( 6 );
+		$(".intBox").val( 2 );
+		$(".menBox").val( 4 );
+		$(".agiBox").val( 2 );
+		$(".dexBox").val( 4 );
+		$(".hpBox").val( 0 );
+		break;
+	      case "mag"://Magic = 'Sorcerer': +2 Str, + 2 Vit, +8 Int, +6 Men, +4 Agi, +8 Dex
+		$(".strBox").val( 2 );
+		$(".vitBox").val( 2 );
+		$(".intBox").val( 8 );
+		$(".menBox").val( 6 );
+		$(".agiBox").val( 4 );
+		$(".dexBox").val( 8 );
+		$(".hpBox").val( 0 );
+		break;
+	      case "heal"://Healer = 'Cleric': +3 Str, +3 Vit, +6 Int, +8 Men, +7 Agi, +6 Dex
+		$(".strBox").val( 3 );
+		$(".vitBox").val( 3 );
+		$(".intBox").val( 6 );
+		$(".menBox").val( 8 );
+		$(".agiBox").val( 7 );
+		$(".dexBox").val( 6 );
+		$(".hpBox").val( 0 );
+		break;
+	      case "beast"://Trainer = 'Beast T.':+6 Str, +8 Vit, +4 Int, +2 Men, +5 Agi, +2 Dex
+		$(".strBox").val( 6 );
+		$(".vitBox").val( 8 );
+		$(".intBox").val( 4 );
+		$(".menBox").val( 2 );
+		$(".agiBox").val( 5 );
+		$(".dexBox").val( 2 );
+		$(".hpBox").val( 0 );
+		break;
+	      default:
+		$(".strBox").val( 0 );
+		$(".vitBox").val( 0 );
+		$(".intBox").val( 0 );
+		$(".menBox").val( 0 );
+		$(".agiBox").val( 0 );
+		$(".dexBox").val( 0 );
+		$(".hpBox").val( 0 );
+		g2LeadSel.val("c");
+		break;
+	  }
+        }
+        function update_model(){
+	  if ( last.initClass != v.initClass  ) {
+	      console.log( "character Selected changed from "+last.initClass+" to "+v.initClass);
+	      //Update the entire Model: m
+	      //don't believe need to empty out object m since every property will be over written,
+	      //EXCEPT when select is put back to initial value
+	      
+	      //data_base.col = [ "Base","BaseLvl","Base2","Base2_Lvl","Start_Align","Luck"]
+	      //data_base = { "fighter": { "Base":"fighter", "BaseLvl":0, "Base2":"", "Base2_Lvl":0, "Start_Align":50, "Luck":50},
+	      for(var i=0; i<data_base.col.length; i++){
+		var atName = data_base.col[i];
+		var atVal = data_base[v.initClass][atName]
+		m[atName] = atVal;
+	      }
+	      //Prime m[0] 
+	      //data_lvl1.col = [ "HP","STR","VIT","INT","MEN","AGI","DEX"];
+	      //data_lvl1 = { "fighter": { "HP":70, "STR":50, "VIT":50, "INT":40, "MEN":46, "AGI":42, "DEX":45}
+	      for(var i=0; i<data_lvl1.col.length; i++){
+		var atName = data_lvl1.col[i];
+		var atVal = data_lvl1[m.Base][atName]
+		m[atName] = atVal;
+	      }
+	      //statNames = ['STR','INT','DEX','VIT','MEN','AGI','HP'];
+	      for(var i=0; i<statNames.length; i++){
+		var atName = statNames[i];
+		m[0][atName] = 0;
+	      }
+	  
+	  }
+	  
+	  //Update Model from Lvl 1 - v.initLvl - 99 
+	  var thisClass;
+	  console.log( "startClass:"+v.initClass+" baseClass:"+m.Base+" base2Class:"+m.Base2);
+	  
+	  //"data_char = { "fighter": { "Name":"Fighter", "Align":"-", "UL":"Short Sword", "UR":"Chain Mail", "LL":"Round Shield", "LR":"Iron Helm",
+	  //"lvl_HP":5, "lvl_STR":4, "lvl_VIT":3, "lvl_INT":3, "lvl_MEN":3, "lvl_AGI":2, "lvl_DEX":3,
+	  //"Strike":45, "Wind":50, "Fire":50, "Earth":50, "Water":50, "Virtue":50, "Bane":50, "physDefCo":20, "magDefCo":22},
+	  
+	  //for(var i=1; i<=v.initLvl;i++){
+	  for(var i=1; i<=99;i++){
+	      if (i >= v.initLvl || (i>=m.Base2_Lvl && i>=m.BaseLvl) ) {
+		thisClass = v.initClass;
+	      } else if ( m.Base2_Lvl === 0 || i < m.BaseLvl ) {
+		thisClass = m.Base;
+	      } else {
+		thisClass = m.Base2;
+	      }
+	      m[i]['thisClass'] = thisClass;//Needed for character changes
+	      
+	      copy_properties_to_m(i,thisClass);
+	  }
+        }
+	 
+        function copy_properties_to_m(i,thisClass){
+	  //stored everything into m[i][...] so don't need to access data_char[ m[i]['thisClass'] ][...] 
+	  for(var j=0,len=attributes.length; j<len; j++){
+	      var atName = attributes[j];
+	      var atVal = data_char[thisClass][ atName ];
+	      if (atVal === undefined) {
+		console.log( "error atVal undefined "+atName+" of class:"+thisClass+" Lvl:"+i);
+	      }
+	      m[i][atName] = atVal;
+	  }
+        }
+        
+        function recalcStats(){
+	  //Stats are stored here (without current gear influences, does include gear +Stat per Lvl bonus)
+	  //statNames = ['STR','INT','DEX','VIT','MEN','AGI','HP'];
+	  var s = {};
+	  for(var i=0; i< statNames.length; i++){
+	      var atName = statNames[i];
+	      var arr = document.getElementsByClassName( atName);//grab both the G1Leader bonus + Stat Adjustment
+	      s[atName] = 0;
+	      for(var j=0;j<arr.length;j++){
+		s[atName] += arr[j].value|0;//Number()
+	      }
+	      s[atName] += m[atName];
+	  }
+	      
+	  //Update VIEW lvl1-v.startLvl stats
+	  //var colhead = ['lvl','Name','Align','Map','Attack Stats','Attack Power','Phys. Resist','Magic Resist','UL','UR','LL','LR','STR','VIT','INT','MEN','AGI','DEX','HP'];
+	  if (v.initClass != "") {
+	      v.Luck = m.Luck;
+	      //for(var i=1; i<=v.initLvl;i++){
+	      for(var i=1; i<=99;i++){
+		for(var j=0; j<colhead.length; j++){
+		    var atName = colhead[j];
+		    
+		    if (atName == 'Align') {
+		        v[i][j] = (i == v.initLvl) ? m.Start_Align : "-";
+		    } else if(atName == 'Map') {
+		        v[i][j] = (i == v.initLvl) ? "XXX" : "-";//UPDATE
+		    } else if ( statNames.indexOf( atName ) != -1 ) {
+		        s[atName] += m[i-1][atName]+getGearPermBonus(i-1,atName);//increase s.<stats>
+		        v[i][j] = (v.checkbox) ? s[atName]+getGearBonuses(i,atName) : s[atName];
+		    } else if( atName == 'Phys. Resist'){
+		        continue;//do calc after loop
+		    } else if( atName == 'Magic Resist'){
+		        continue;//do calc after loop
+		    }else if( atName == 'Attack Stats'){
+		        v[i][j] = "Str/Dex";
+		        continue;//do calc after loop
+		    }else if( atName == 'Attack Power'){
+		        continue;//do calc after loop
+		    } else if( atName == 'lvl' ){
+		        v[i][j] = m[i][atName];
+		    }else if( atName == 'Name'){
+		        v[i][j] = m[i][atName];
+		        if ( i >= v.initLvl && data_classchange[ m[i].thisClass ].From !== "yes") {
+			  v[i].childNodes[j].className="Name-cell";//class is changable!
+		        }else{
+			  v[i].childNodes[j].className="";
+		        }
+		    } else {
+		        //m[i]["UL"] ["UR"] ["LL"] ["LR"];
+		        v[i][j] = m[i][atName];
+		        // i >= initial Level && equip slot has something && item in slot is not Static
+		        if ( i >= v.initLvl && v[i][j] != "-" && data_gear[ v[i][j] ].Static === "-") {
+			  //gear item is editable -- set Event Handlers for weapon swapping
+			  v[i].childNodes[j].className="swappable";
+			  //v[i].childNodes[j].click( function(){ weaponWindow() } );
+			  //v[i].childNodes[j].addEventListener('click', function() { console.log(this); weaponWindow().apply(this) ; });
+			  //$('.swappable').click( weaponWindow(v[i].children[j])  );
+		        }else{
+			  v[i].childNodes[j].className="";
+		        }
+		    }
+		    if (v[i][j] == "undefined" || v[i][j] == "-") {
+		        v[i][j] = "-";
+		        //v[i].childNodes[j].className="noBorder";
+		    } else {
+		        //v[i].childNodes[j].className="yesBorder";
+		    }
+		}
+		//Resistances: (Must happen after STATS and Gear)
+		var strikeRes = getGearBonuses(i,v.resist) + m[i][v.resist];//strike water wind earth...
+		var physResM = m[i].physDefCo;
+		var magResM = m[i].magDefCo;
+		//[12]=STR, [13]=VIT, [14]=INT, [15]=MEN
+		//Physical Resist : ( Str+100 )*( Vit+25 )*( Phy_Resist_Mult/100 )*( Strike_Resist/100 ) / 376
+		v[i][6] = ( (v[i][12]- -100)*(v[i][13]- -25)*(physResM/100)*((strikeRes+50)/100)/376 ).toFixed(1);
+		//Magic Resist : ( Int+100 )*( Men+25 )*( Mag_Resist_Mult/100 )*( Strike_Resist/100 ) / 376 
+		v[i][7] = ( (v[i][14]- -100)*(v[i][15]- -25)*(magResM/100)*((strikeRes+50)/100)/376 ).toFixed(1);
+		
+		//Attack Power
+		var strBoost = ( v.checkbox) ? getGearBonuses(i,'STR') : 0;
+		//P = (Str_Boost + Class_Bonus)*(Raw_Str + 50)*(Total_Dex + 100)/100 000
+		v[i][5] =( ((strBoost+m[i].physCo)*(s.STR +50)*( s.DEX + 100))/100000 ).toFixed(1);
+	      }
+	  }
+	  //character swap event handlers
+	  var allCharacters = Object.getOwnPropertyNames( data_classchange );
+	  $('.Name-cell').click(function(){
+	      var lvl = this.parentNode.id;
+	      var thisClass = m[lvl].thisClass
+	      var classType = data_classchange[thisClass].From;
+	      if (classType !== "yes") {
+	      
+		//make list of classes
+		var listOfClasses = [];
+		for(var i=0; i<allCharacters.length; i++){
+		    var charName = allCharacters[i];
+		    var atName = data_classchange[charName].To;
+		    if ( -1 != atName.indexOf(classType) ) {
+		        listOfClasses.push( charName );
+		        console.log( data_char[charName].Name+" "+data_char[charName].Align );
+		    }
+		}
+		
+		//empty table
+		$('#charchange tbody').empty();
+		
+		//populate table
+		for(var i=0; i<listOfClasses.length; i++){
+		    var cur = listOfClasses[i];
+		    var curData = data_char[cur];
+		    var newRow = document.createElement('tr');
+		    newRow.className = "characterRow";//used to add action listener
+		    newRow.innerHTML = "<th>"+curData.Name+"</th><td>"+curData.Align+"</td>";
+		    newRow.id = cur;
+		    $('#charchange > tbody:last').append( newRow );
+		}
+		
+		//add event listener
+		$('.characterRow').click(function(){
+		    //Unblock Screen
+		    $.unblockUI();
+		    
+		    //$('#'+lvl).children()[0].html( this.id );
+		    //$('#'+lvl).children()[0].innerHTML = this.id;
+		    console.log( this.id );
+		    
+		    var rowNum = lvl;
+		    var colName = "Name";
+		    while( rowNum<100 ){
+		        m[rowNum]['thisClass'] = this.id;//update items for all matching levels
+		        copy_properties_to_m(rowNum,this.id);//update all other properties.
+		        rowNum++;
+		    }
+		    recalcStats();
+		});
+		
+		//Block Screen
+		$.blockUI({message: $('#charchangeDiv')});
+	      }
+	  });
+	  
+	  //weapon swap event handlers
+	  $('.swappable').click( function() {
+	      //var callingThis = this;
+	      var lvl = this.parentNode.id;
+	      var weapon = this.innerHTML;
+	      var type = data_gear[weapon].Type;
+	      var table = $('#WeaponListing tbody');
+	      
+	      console.log( "LVL:"+lvl+" weapon:"+weapon+" type:"+type);
+	      
+	      //remove old elements from table
+	      $('#WeaponListing tbody').empty();
+	      
+	      //add item to table:
+	      for(var i=0; i<weps.length; i++){
+		var atName = weps[i];
+		if(data_gear[ atName ].Type == type ) {
+		    //ignore items that are Static
+		    if (data_gear[ atName ].Static !="-") {
+		        console.log( atName+" is Static");
+		        continue;
+		    }
+		    var newRow = document.createElement('tr');
+		    newRow.className = "wepChoice";
+		    newRow.id = atName;
+		    //STR":0, "INT":0, "AGI":0, "DEX":0, "VIT":0, "MEN":0, "Strike":11, "Wind":0, "Fire":0, "Earth":0, "Water":0, "Virtue":0, "Bane":0, "Levelup
+		    /*/
+		    newRow.innerHTML="<th>"+atName+"</th><td>"+data_gear[atName]['STR']+"</td><td>"+data_gear[atName]['INT']+"</td><td>"+data_gear[atName]['AGI']+"</td><td>"+data_gear[atName]['DEX']+"</td><td>"+data_gear[atName]['VIT']+"</td><td>"+data_gear[atName]['MEN']+"</td><td>"+data_gear[atName]['Strike']+"</td><td>"+data_gear[atName]['Wind']+"</td><td>"+data_gear[atName]['Fire']+"</td><td>"+data_gear[atName]['Earth']+"</td><td>"+data_gear[atName]['Water']+"</td><td>"+data_gear[atName]['Virtue']+"</td><td>"+data_gear[atName]['Bane']+"</td><td>"+data_gear[atName]['Levelup']+"</td>";
+		    /*/for(var j=0; j<wepProps.length-1; j++){//-1 so skip last column
+		        var prop = wepProps[j];
+		        var newData; 
+		        if ( prop === "Type") {
+			  newData = document.createElement('th');
+			  newData.innerHTML = atName;//weapon name in 1st column instead of type
+		        } else {
+			  newData = document.createElement('td');
+			  newData.innerHTML = data_gear[atName][prop];
+		        }
+		        newRow.appendChild(newData);
+		    }//*/
+		    $('#WeaponListing > tbody:last').append( newRow );
+		}
+	      }
+	      $('.wepChoice').click(function(){
+		console.log("Level:"+lvl+" "+type+" changed From:"+weapon+" to:"+this.id);
+		
+		//Unhide Table
+		$.unblockUI();
+		//$('div#page').unblock();
+		
+		//$('#'+lvl).children()[].innerHTML = this.children[0].innerHTML;
+		//callingThis.innerHTML = this.id;
+		var rowNum = lvl;//callingThis.parentNode.id;//v[?].id == ?
+		var colName;
+		for(var i=0; i<attributes.length; i++) {
+		    var atName = attributes[i];
+		    if(m[lvl][atName] === weapon) {
+			  //mrow[prop] = this.id;
+			  colName = atName;
+		        
+		    }
+		}
+		while( rowNum<100 && m[rowNum][colName] == weapon){
+		    m[rowNum++][colName] = this.id;//update items for all matching levels
+		}
+		recalcStats();
+	      });
+	      
+	      //Hide Table and display message
+	      //$('.blockMe').block({message: $('#choiceForm')});
+	      $.blockUI({message: $('#choiceForm')});
+	  });
+        }
+        
+      
+    </script>
+    </div><!-- div id="page"-->
+    
+    <!--Character Change Menu-->
+    <div id="charchangeDiv" class="hide">
+        <table id="charchange">
+	  <thead>
+	      <tr><th>--Name--</th><th>Alignment</th><th>StatsRequired</th></tr>
+	  </thead>
+	  <tbody></tbody>
+        </table>
+    </div>
+    
+    <!--Weapon Change Menu-->
+    <div id="choiceForm" class="hide">
+        <table id="WeaponListing">
+	  <thead>
+	      <tr><th>--Name--</th><th>Str</th><th>Int</th><th>Agi</th><th>Dex</th><th>Vit</th><th>Men</th><td>Strike</td><td>Wind</td><td>Fire</td><td>Earth</td><td>Water</td><td>Holy</td><td>Bane</td><th>Bonus</th></tr>
+	  </thead>
+	  <tbody>
+	      
+	  </tbody>
+        </table>
+    </div>
+    
+</form>
+
+
+
+<script>console.log("JavaScript Operational");</script>
+</body>
+</html>
+
+
