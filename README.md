@@ -1,6 +1,6 @@
 # OgreBattle
 OgreBattle64 Character Development Calculator Tool
-http://goo.gl/M0iq8O
+http://nickexamples.atspace.cc/Ogre/
 
 **What is OgreBattle64:**
 It's a game for the Nintendo 64 Console that came out in 2000, 
@@ -12,7 +12,7 @@ This Web Tool is an attempt to calculate everything possible about a character b
 **Language:**
 This tool is written in JavaScript/HTML/CSS with no backend database (data tables all stored in JSON)
 Which means after the webpage loads it can work while offline.
-And also means it can be hosted on Google Drive: http://goo.gl/M0iq8O
+And also means it can be hosted on Google Drive: http://nickexamples.atspace.cc/Ogre/
 
 **Questions:**
 Feel free to contact me if you have any questions.
